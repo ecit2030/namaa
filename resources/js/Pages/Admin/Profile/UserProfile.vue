@@ -14,11 +14,11 @@
 </template>
 
 <script setup>
-import AdminLayout from '@/components/layout/AdminLayout.vue'
-import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
-import ProfileCard from '@/components/profile/ProfileCard.vue'
-import PersonalInfoCard from '@/components/profile/PersonalInfoCard.vue'
-import AddressCard from '@/components/profile/AddressCard.vue'
+import AdminLayout from '@/Components/layout/AdminLayout.vue'
+import PageBreadcrumb from '@/Components/common/PageBreadcrumb.vue'
+import ProfileCard from '@/Components/profile/ProfileCard.vue'
+import PersonalInfoCard from '@/Components/profile/PersonalInfoCard.vue'
+import AddressCard from '@/Components/profile/AddressCard.vue'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'

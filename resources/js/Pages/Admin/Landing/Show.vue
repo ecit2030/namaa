@@ -2,9 +2,9 @@
 import { ref, watch } from 'vue';
 import { Head, useForm, router } from '@inertiajs/vue3';
 import { route } from '@/route';
-import AdminLayout from '@/components/layout/AdminLayout.vue';
-import Modal from '@/components/profile/Modal.vue';
-import DangerAlert from '@/components/modals/DangerAlert.vue';
+import AdminLayout from '@/Components/layout/AdminLayout.vue';
+import Modal from '@/Components/profile/Modal.vue';
+import DangerAlert from '@/Components/modals/DangerAlert.vue';
 
 interface SectionItem {
   id: number;
@@ -162,14 +162,14 @@ const closeItemModal = () => {
 
 const updateSection = () => {
   if (!currentSectionId.value) return;
-  
+
   // Convert boolean to number for FormData and serialize settings
   const formData = {
     ...sectionForm.data(),
     is_active: sectionForm.is_active ? 1 : 0,
     settings: JSON.stringify(sectionForm.settings),
   };
-  
+
   sectionForm.transform(() => formData).post(route('admin.landing.sections.update', currentSectionId.value), {
     preserveScroll: true,
     forceFormData: true,
@@ -184,13 +184,13 @@ const updateSection = () => {
 
 const updateItem = () => {
   if (!selectedItem.value) return;
-  
+
   // Convert boolean to number for FormData
   const formData = {
     ...itemForm.data(),
     is_active: itemForm.is_active ? 1 : 0,
   };
-  
+
   itemForm.transform(() => formData).post(route('admin.landing.items.update', selectedItem.value.id), {
     preserveScroll: true,
     forceFormData: true,
@@ -205,13 +205,13 @@ const updateItem = () => {
 
 const createItem = () => {
   if (!currentSectionId.value) return;
-  
+
   // Convert boolean to number for FormData
   const formData = {
     ...itemForm.data(),
     is_active: itemForm.is_active ? 1 : 0,
   };
-  
+
   itemForm.transform(() => formData).post(route('admin.landing.items.store', currentSectionId.value), {
     preserveScroll: true,
     forceFormData: true,
@@ -552,7 +552,7 @@ const getSectionTypeName = (type: string) => {
               <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 صورة القسم
               </label>
-              
+
               <!-- Current or Preview Image -->
               <div v-if="imagePreview || currentImageUrl" class="mb-4">
                 <div class="relative inline-block">
@@ -608,8 +608,8 @@ const getSectionTypeName = (type: string) => {
                   type="button"
                   @click="sectionForm.settings = { ...sectionForm.settings, layout: 'mixed' }"
                   class="p-4 rounded-lg border-2 transition-all text-center"
-                  :class="(!sectionForm.settings?.layout || sectionForm.settings?.layout === 'mixed') 
-                    ? 'border-[#205355] bg-[#205355]/10' 
+                  :class="(!sectionForm.settings?.layout || sectionForm.settings?.layout === 'mixed')
+                    ? 'border-[#205355] bg-[#205355]/10'
                     : 'border-gray-300 dark:border-gray-600 hover:border-[#205355]/50'"
                 >
                   <!-- Bento Grid: 3 أعمدة مع بطاقة ممتدة عمودياً -->
@@ -632,8 +632,8 @@ const getSectionTypeName = (type: string) => {
                   type="button"
                   @click="sectionForm.settings = { ...sectionForm.settings, layout: 'horizontal' }"
                   class="p-4 rounded-lg border-2 transition-all text-center"
-                  :class="sectionForm.settings?.layout === 'horizontal' 
-                    ? 'border-[#205355] bg-[#205355]/10' 
+                  :class="sectionForm.settings?.layout === 'horizontal'
+                    ? 'border-[#205355] bg-[#205355]/10'
                     : 'border-gray-300 dark:border-gray-600 hover:border-[#205355]/50'"
                 >
                   <div class="flex flex-col items-center gap-1">
@@ -647,8 +647,8 @@ const getSectionTypeName = (type: string) => {
                   type="button"
                   @click="sectionForm.settings = { ...sectionForm.settings, layout: 'vertical' }"
                   class="p-4 rounded-lg border-2 transition-all text-center"
-                  :class="sectionForm.settings?.layout === 'vertical' 
-                    ? 'border-[#205355] bg-[#205355]/10' 
+                  :class="sectionForm.settings?.layout === 'vertical'
+                    ? 'border-[#205355] bg-[#205355]/10'
                     : 'border-gray-300 dark:border-gray-600 hover:border-[#205355]/50'"
                 >
                   <div class="flex gap-1 justify-center">
@@ -777,7 +777,7 @@ const getSectionTypeName = (type: string) => {
               <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 صورة العنصر
               </label>
-              
+
               <!-- Current or Preview Image -->
               <div v-if="itemImagePreview || currentItemImageUrl" class="mb-4">
                 <div class="relative inline-block">

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 import LandingLayout from '@/Layouts/LandingLayout.vue';
-import HeroSection from '@/components/Landing/HeroSection.vue';
-import FeaturesSection from '@/components/Landing/FeaturesSection.vue';
-import HowItWorksSection from '@/components/Landing/HowItWorksSection.vue';
-import ServicesSection from '@/components/Landing/ServicesSection.vue';
-import MobileAppSection from '@/components/Landing/MobileAppSection.vue';
-import TestimonialsSection from '@/components/Landing/TestimonialsSection.vue';
-import FaqSection from '@/components/Landing/FaqSection.vue';
-import FooterSection from '@/components/Landing/FooterSection.vue';
+import HeroSection from '@/Components/Landing/HeroSection.vue';
+import FeaturesSection from '@/Components/Landing/FeaturesSection.vue';
+import HowItWorksSection from '@/Components/Landing/HowItWorksSection.vue';
+import ServicesSection from '@/Components/Landing/ServicesSection.vue';
+import MobileAppSection from '@/Components/Landing/MobileAppSection.vue';
+import TestimonialsSection from '@/Components/Landing/TestimonialsSection.vue';
+import FaqSection from '@/Components/Landing/FaqSection.vue';
+import FooterSection from '@/Components/Landing/FooterSection.vue';
 
 interface Section {
   id: number;
@@ -54,10 +54,10 @@ const getSectionComponent = (type: string) => {
   <LandingLayout>
     <Head>
       <title>{{ page.meta_title || page.title }}</title>
-      <meta 
-        v-if="page.meta_description" 
-        name="description" 
-        :content="page.meta_description" 
+      <meta
+        v-if="page.meta_description"
+        name="description"
+        :content="page.meta_description"
       />
     </Head>
 

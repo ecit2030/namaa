@@ -6,9 +6,9 @@
 </template>
 
 <script setup>
-import AdminLayout from '@/components/layout/AdminLayout.vue'
-import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
-import ShowConsultantForm from '@/components/admin/consultant/ShowConsultant.vue'
+import AdminLayout from '@/Components/layout/AdminLayout.vue'
+import PageBreadcrumb from '@/Components/common/PageBreadcrumb.vue'
+import ShowConsultantForm from '@/Components/admin/consultant/ShowConsultant.vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { usePage } from '@inertiajs/vue3'

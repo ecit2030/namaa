@@ -50,7 +50,7 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
-        
+
         // تحديث اللغة في الجلسة بناءً على تفضيل المستخدم المسجل دخوله
         $user = Auth::guard('admin')->user();
         if ($user && $user->locale) {

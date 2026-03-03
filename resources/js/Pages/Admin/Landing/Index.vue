@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { route } from '@/route';
-import AdminLayout from '@/components/layout/AdminLayout.vue';
+import AdminLayout from '@/Components/layout/AdminLayout.vue';
 
 interface LandingPage {
   id: number;

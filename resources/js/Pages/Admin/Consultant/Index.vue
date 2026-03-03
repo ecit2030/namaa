@@ -10,10 +10,10 @@
 </template>
 
 <script setup>
-import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
-import AdminLayout from '@/components/layout/AdminLayout.vue'
-import ComponentCard from '@/components/common/ComponentCard.vue'
-import ShowConsultants from '@/components/admin/consultant/ShowConsultants.vue'
+import PageBreadcrumb from '@/Components/common/PageBreadcrumb.vue'
+import AdminLayout from '@/Components/layout/AdminLayout.vue'
+import ComponentCard from '@/Components/common/ComponentCard.vue'
+import ShowConsultants from '@/Components/admin/consultant/ShowConsultants.vue'
 import { usePage } from '@inertiajs/vue3' // أضف هذا السطر
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'

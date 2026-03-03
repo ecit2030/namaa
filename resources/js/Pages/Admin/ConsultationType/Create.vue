@@ -10,10 +10,10 @@
 </template>
 
 <script setup>
-import PageBreadcrumb from '@/components/common/PageBreadcrumb.vue'
-import AdminLayout from '@/components/layout/AdminLayout.vue'
-import ComponentCard from '@/components/common/ComponentCard.vue'
-import CreateConsultationType from '@/components/admin/consultation-type/CreateConsultationType.vue'
+import PageBreadcrumb from '@/Components/common/PageBreadcrumb.vue'
+import AdminLayout from '@/Components/layout/AdminLayout.vue'
+import ComponentCard from '@/Components/common/ComponentCard.vue'
+import CreateConsultationType from '@/Components/admin/consultation-type/CreateConsultationType.vue'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 

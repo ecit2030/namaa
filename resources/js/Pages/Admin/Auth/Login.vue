@@ -270,8 +270,8 @@
 import { ref, computed } from 'vue'
 import { Link, useForm, router } from '@inertiajs/vue3'
 import { route } from '@/route'
-import CommonGridShape from '@/components/common/CommonGridShape.vue'
-import FullScreenLayout from '@/components/layout/FullScreenLayout.vue'
+import CommonGridShape from '@/Components/common/CommonGridShape.vue'
+import FullScreenLayout from '@/Components/layout/FullScreenLayout.vue'
 import { useI18n } from 'vue-i18n'
 import { switchLocale } from '@/composables/useLocale'
 const showPassword = ref(false)
@@ -302,10 +302,10 @@ const handleSubmit = () => {
 
 function toggleLocale() {
   const next = currentLocale.value === 'ar' ? 'en' : 'ar'
-  
+
   // Update local locale for immediate UI update
   locale.value = next
-  
+
   // Use the unified switchLocale function
   switchLocale(next)
 }

@@ -177,7 +177,7 @@ Route::middleware('auth:admin')
         Route::patch('consultants/{id}/deactivate', [ConsultantController::class, 'deactivate'])
             ->name('consultants.deactivate');
 
-        
+
         // ✅ Weekly schedule (replace)
         Route::put('consultants/{consultant}/working-hours/replace', [ConsultantController::class, 'replaceWeeklyWorkingHours'])
             ->name('consultants.working-hours.replace');
@@ -201,7 +201,7 @@ Route::middleware('auth:admin')
         // Bookings
         Route::get('bookings/available-slots', [BookingController::class, 'availableSlots'])
             ->name('bookings.available-slots');
-            
+
         Route::resource('bookings', BookingController::class)
             ->names('bookings');
 
@@ -266,13 +266,13 @@ Route::middleware('auth:admin')
         Route::prefix('landing')->as('landing.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'index'])->name('index');
             Route::get('/{id}', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'show'])->name('show');
-            
+
             // Sections
             Route::post('/{pageId}/sections', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'storeSection'])->name('sections.store');
             Route::put('/sections/{sectionId}', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'updateSection'])->name('sections.update');
             Route::delete('/sections/{sectionId}', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'deleteSection'])->name('sections.delete');
             Route::post('/sections/reorder', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'reorderSections'])->name('sections.reorder');
-            
+
             // Section Items
             Route::post('/sections/{sectionId}/items', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'storeSectionItem'])->name('items.store');
             Route::put('/items/{itemId}', [\App\Http\Controllers\Admin\LandingPageAdminController::class, 'updateSectionItem'])->name('items.update');
