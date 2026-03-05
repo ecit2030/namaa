@@ -26,18 +26,18 @@ class MessageController extends Controller
 
     /**
      * List messages in a conversation with cursor pagination
-     * 
+     *
      * Fetches paginated messages for a conversation and implicitly marks the
      * conversation as read up to the latest fetched message.
-     * 
+     *
      * Endpoint: GET /api/conversations/{conversation}/messages
      * Authentication: Required (sanctum)
      * Authorization: User must be a participant in the conversation
-     * 
+     *
      * Query Parameters:
      * - per_page (optional): Number of messages per page (default: 50)
      * - cursor (optional): Cursor for pagination
-     * 
+     *
      * Response Structure:
      * {
      *   "success": true,
@@ -61,12 +61,12 @@ class MessageController extends Controller
      *     "unread_count": 0
      *   }
      * }
-     * 
+     *
      * Implicit Mark as Read:
      * - Automatically updates read marker to latest fetched message
      * - Returns updated unread_count in meta
      * - Uses optimistic approach for race condition handling
-     * 
+     *
      * @param Conversation $conversation
      * @param GetMessagesRequest $request
      * @return JsonResponse
@@ -111,7 +111,7 @@ class MessageController extends Controller
     /**
      * Send a message with optional attachments
      * POST /api/conversations/{conversation}/messages
-     * 
+     *
      * @param Conversation $conversation
      * @param SendMessageRequest $request
      * @return JsonResponse
