@@ -28,7 +28,7 @@ class ConversationsListTest extends TestCase
             'last_name' => 'محمد',
             'user_type' => 'customer',
         ]);
-        
+
         // Create consultant with its own user
         $consultant = Consultant::factory()->create();
         $consultantUser = $consultant->user;
@@ -75,6 +75,7 @@ class ConversationsListTest extends TestCase
                             'id',
                             'full_name',
                             'avatar',
+                            'phone_number',
                         ],
                         'last_message' => [
                             'id',
@@ -112,7 +113,7 @@ class ConversationsListTest extends TestCase
     public function test_can_search_conversations_by_participant_name(): void
     {
         $client = User::factory()->create(['user_type' => 'customer']);
-        
+
         // Create first consultant with its own user
         $consultant1 = Consultant::factory()->create();
         $consultant1->user->update([
@@ -149,7 +150,7 @@ class ConversationsListTest extends TestCase
             ->getJson('/api/conversations?search=Sara');
 
         $response->assertOk();
-        
+
         // For now, just verify the API works - search functionality can be tested manually
         // The search feature has a complex query that needs debugging
         $this->assertTrue(true);
