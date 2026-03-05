@@ -31,7 +31,7 @@ class ConversationListResource extends JsonResource
             'other_participant' => [
                 'id' => $otherParticipant?->id,
                 'full_name' => $otherParticipant ? trim($otherParticipant->first_name . ' ' . $otherParticipant->last_name) : null,
-                'phone_number' => $otherParticipant ? trim($otherParticipant->phone_number) : null,
+                'phone_number' => trim($otherParticipant->phone_number),
                 'avatar' => $otherParticipant?->avatar,
             ],
             'last_message' => $lastMessage ? [
