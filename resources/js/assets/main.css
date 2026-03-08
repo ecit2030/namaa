@@ -41,18 +41,18 @@ layer(base);
   --color-white: #ffffff;
   --color-black: #101828;
 
-  /* CASB / نماء brand palette */
-  --color-brand-25: #f5f7f6;
-  --color-brand-50: #F5F7F6;
-  --color-brand-100: #d4e5d4;
-  --color-brand-200: #A0BDA0;
-  --color-brand-300: #8ba98b;
-  --color-brand-400: #5f8f6a;
-  --color-brand-500: #2F684F;
-  --color-brand-600: #266040;
-  --color-brand-700: #1d4d35;
-  --color-brand-800: #163a29;
-  --color-brand-900: #12392A;
+  /* CASB / نماء – أخضر غامق مع أبيض */
+  --color-brand-25: #ffffff;
+  --color-brand-50: #f5f7f6;
+  --color-brand-100: #e8eeeb;
+  --color-brand-200: #c5d4cc;
+  --color-brand-300: #7a9b8a;
+  --color-brand-400: #3d6b54;
+  --color-brand-500: #12392A;
+  --color-brand-600: #0f2f23;
+  --color-brand-700: #0c261d;
+  --color-brand-800: #091c16;
+  --color-brand-900: #061210;
   --color-brand-950: #0E0E0E;
 
   --color-blue-light-25: #f5fbff;
@@ -146,7 +146,7 @@ layer(base);
   --shadow-theme-xl: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
     0px 8px 8px -4px rgba(16, 24, 40, 0.03);
   --shadow-datepicker: -5px 0 0 #262d3c, 5px 0 0 #262d3c;
-  --shadow-focus-ring: 0px 0px 0px 4px rgba(47, 104, 79, 0.2);
+  --shadow-focus-ring: 0px 0px 0px 4px rgba(18, 57, 42, 0.2);
   --shadow-slider-navigation: 0px 1px 2px 0px rgba(16, 24, 40, 0.1),
     0px 1px 3px 0px rgba(16, 24, 40, 0.1);
   --shadow-tooltip: 0px 4px 6px -2px rgba(16, 24, 40, 0.05),
@@ -511,13 +511,13 @@ span.flatpickr-weekday,
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #2F684F;
+  background: #12392A;
   @apply !border-brand-500 !bg-brand-500 hover:!border-brand-500 hover:!bg-brand-500;
 }
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-  box-shadow: -10px 0 0 #2F684F;
+  box-shadow: -10px 0 0 #12392A;
 }
 
 .flatpickr-months .flatpickr-prev-month svg,

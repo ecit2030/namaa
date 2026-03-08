@@ -31,11 +31,11 @@ const navLinks = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-brand-offwhite text-brand-black landing-bg" dir="rtl">
+  <div class="min-h-screen bg-white text-brand-black landing-bg" dir="rtl">
     <!-- Top bar -->
     <div
       v-show="!isScrolled"
-      class="fixed top-0 left-0 right-0 z-[60] bg-brand-dark text-brand-pale text-sm py-2 hidden lg:block"
+      class="fixed top-0 left-0 right-0 z-[60] bg-brand-dark text-white text-sm py-2 hidden lg:block"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div class="flex items-center gap-6">
@@ -44,7 +44,7 @@ const navLinks = [
         </div>
         <Link
           href="#contact"
-          class="font-semibold text-brand-pale hover:text-white transition-colors"
+          class="font-semibold text-white/90 hover:text-white transition-colors"
         >
           تواصل معنا
         </Link>
@@ -54,7 +54,7 @@ const navLinks = [
     <!-- Main Header -->
     <header
       class="fixed z-50 left-0 right-0 transition-all duration-300"
-      :class="isScrolled ? 'top-0 bg-white shadow-md border-b border-brand-pale/30' : 'top-10 lg:top-10 bg-white/95 backdrop-blur-sm border-b border-brand-pale/30'"
+      :class="isScrolled ? 'top-0 bg-white shadow-md border-b border-gray-200' : 'top-10 lg:top-10 bg-white/95 backdrop-blur-sm border-b border-gray-200'"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-18">
@@ -67,7 +67,7 @@ const navLinks = [
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="px-4 py-2 text-sm font-medium text-brand-forest hover:text-brand-dark hover:bg-brand-pale/20 rounded-lg transition-colors"
+              class="px-4 py-2 text-sm font-medium text-brand-dark hover:text-brand-black hover:bg-gray-100 rounded-lg transition-colors"
             >
               {{ link.label }}
             </Link>
@@ -82,7 +82,7 @@ const navLinks = [
             </Link>
             <Link
               href="/register"
-              class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-forest rounded-lg hover:bg-brand-dark transition-colors"
+              class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-dark rounded-lg hover:bg-brand-black transition-colors"
             >
               حمل التطبيق
             </Link>
@@ -90,7 +90,7 @@ const navLinks = [
 
           <button
             type="button"
-            class="lg:hidden p-2 rounded-lg text-brand-dark hover:bg-brand-pale/20"
+            class="lg:hidden p-2 rounded-lg text-brand-dark hover:bg-gray-100"
             aria-label="القائمة"
             @click="toggleMenu"
           >
@@ -114,23 +114,23 @@ const navLinks = [
       >
         <div
           v-show="isMenuOpen"
-          class="lg:hidden border-t border-brand-pale/30 bg-white"
+          class="lg:hidden border-t border-gray-200 bg-white"
         >
           <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
             <Link
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="block px-4 py-3 text-base font-medium text-brand-dark rounded-lg hover:bg-brand-pale/20"
+              class="block px-4 py-3 text-base font-medium text-brand-dark rounded-lg hover:bg-gray-100"
               @click="isMenuOpen = false"
             >
               {{ link.label }}
             </Link>
             <div class="pt-4 flex flex-col gap-2">
-              <Link href="/login" class="text-center px-4 py-3 font-semibold text-brand-dark rounded-lg border border-brand-pale/50" @click="isMenuOpen = false">
+              <Link href="/login" class="text-center px-4 py-3 font-semibold text-brand-dark rounded-lg border border-gray-300" @click="isMenuOpen = false">
                 انضم كمستشار
               </Link>
-              <Link href="/register" class="text-center px-4 py-3 font-semibold text-white bg-brand-forest rounded-lg hover:bg-brand-dark" @click="isMenuOpen = false">
+              <Link href="/register" class="text-center px-4 py-3 font-semibold text-white bg-brand-dark rounded-lg hover:bg-brand-black" @click="isMenuOpen = false">
                 حمل التطبيق
               </Link>
             </div>
@@ -160,8 +160,8 @@ const navLinks = [
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(47, 104, 79, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(18, 57, 42, 0.05) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(18, 57, 42, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(18, 57, 42, 0.04) 0%, transparent 50%);
   animation: landing-bg-shift 18s ease-in-out infinite;
 }
 .landing-bg > * {

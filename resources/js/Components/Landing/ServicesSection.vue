@@ -35,16 +35,16 @@ const services = computed(() => props.section.items || defaultServices);
 
 <template>
   <!-- Reyiada "خدماتنا" style: "حلولنا التي تدفع مشاريعك نحو النجاح" + cards with المزيد -->
-  <section id="services" class="relative py-20 lg:py-28 bg-brand-offwhite">
+  <section id="services" class="relative py-20 lg:py-28 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-black mb-3">
           خدماتنا
         </h2>
-        <h3 class="text-xl text-brand-forest font-medium mb-2">
+        <h3 class="text-xl text-brand-dark font-medium mb-2">
           {{ section.title || 'حلولنا التي تدفع مشاريعك نحو النجاح' }}
         </h3>
-        <p class="text-brand-forest/90">
+        <p class="text-gray-600">
           {{ section.subtitle || 'خدمات مالية ومحاسبية مصممة لدعم نمو أعمالك' }}
         </p>
       </div>
@@ -54,15 +54,15 @@ const services = computed(() => props.section.items || defaultServices);
           v-for="(service, index) in services"
           :key="index"
           :href="service.link || '#'"
-          class="group block bg-white rounded-xl border border-brand-pale/50 p-6 lg:p-8 shadow-sm hover:shadow-lg hover:border-brand-forest/40 transition-all duration-300 min-h-[260px] flex flex-col"
+          class="group block bg-white rounded-xl border border-gray-200 p-6 lg:p-8 shadow-sm hover:shadow-lg hover:border-brand-dark/40 transition-all duration-300 min-h-[260px] flex flex-col"
         >
           <h3 class="text-lg font-bold text-brand-black mb-3">
             {{ service.title }}
           </h3>
-          <p class="text-brand-forest/90 leading-relaxed text-sm flex-1 line-clamp-3 mb-4">
+          <p class="text-gray-600 leading-relaxed text-sm flex-1 line-clamp-3 mb-4">
             {{ service.description }}
           </p>
-          <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-forest group-hover:gap-2 transition-all">
+          <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-dark group-hover:gap-2 transition-all">
             {{ service.link_text || 'المزيد' }}
             <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

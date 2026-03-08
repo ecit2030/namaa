@@ -63,26 +63,26 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-20 lg:py-28 bg-brand-offwhite">
+  <section id="testimonials" class="relative py-20 lg:py-28 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-black mb-3">
           آراء العملاء
         </h2>
-        <p class="text-lg text-brand-forest">
+        <p class="text-lg text-brand-dark">
           {{ section?.title || 'انطباعات حقيقية من عملائنا' }}
         </p>
-        <p class="text-brand-muted mt-1">
+        <p class="text-gray-600 mt-1">
           {{ section?.subtitle || 'رواد أعمال وأصحاب مشاريع حققوا أهدافهم من خلال استشاراتنا' }}
         </p>
       </div>
 
       <div class="relative">
-        <div class="absolute top-0 right-4 text-[100px] text-brand-pale/50 font-serif leading-none select-none">
+        <div class="absolute top-0 right-4 text-[100px] text-brand-dark/10 font-serif leading-none select-none">
           "
         </div>
 
-        <div class="relative bg-white rounded-2xl border border-brand-pale/50 p-8 sm:p-10">
+        <div class="relative bg-white rounded-2xl border border-gray-200 p-8 sm:p-10">
           <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
             <div class="shrink-0">
               <div
@@ -97,7 +97,7 @@ onUnmounted(() => {
               </div>
               <div
                 v-else
-              class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest text-white"
+              class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-dark text-white"
               >
                 {{ testimonials[currentIndex].avatar || '👤' }}
               </div>
@@ -108,7 +108,7 @@ onUnmounted(() => {
                 <svg
                   v-for="i in 5"
                   :key="i"
-                  class="w-5 h-5 text-brand-forest"
+                  class="w-5 h-5 text-brand-dark"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -122,7 +122,7 @@ onUnmounted(() => {
                 <div class="font-bold text-brand-black">
                   {{ testimonials[currentIndex].name || testimonials[currentIndex].title }}
                 </div>
-                <div class="text-brand-muted text-sm">
+                <div class="text-gray-600 text-sm">
                   {{ testimonials[currentIndex].role || testimonials[currentIndex].subtitle }}
                 </div>
               </div>
@@ -137,8 +137,8 @@ onUnmounted(() => {
             :key="index"
             type="button"
             @click="goTo(index)"
-            class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-forest"
-            :class="currentIndex === index ? 'w-8 bg-brand-forest' : 'w-2.5 bg-brand-muted/50 hover:bg-brand-muted'"
+            class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-dark"
+            :class="currentIndex === index ? 'w-8 bg-brand-dark' : 'w-2.5 bg-gray-300 hover:bg-gray-400'"
             :aria-label="`الشهادة ${index + 1}`"
           />
         </div>

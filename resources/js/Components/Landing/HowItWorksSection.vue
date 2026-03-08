@@ -33,14 +33,14 @@ const steps = props.section.items || defaultSteps;
         <p class="text-xl font-medium text-brand-dark mb-1">
           {{ section.title || 'ثلاث خطوات بسيطة' }}
         </p>
-        <p class="text-brand-forest">
+        <p class="text-brand-dark/90">
           {{ section.subtitle || 'للحصول على الاستشارة التي تحتاجها' }}
         </p>
       </div>
 
       <div class="relative">
         <div
-          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-40 hidden lg:block bg-brand-forest"
+          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-40 hidden lg:block bg-brand-dark"
         />
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-6">
@@ -50,16 +50,16 @@ const steps = props.section.items || defaultSteps;
             class="relative flex flex-col items-center text-center"
           >
             <div
-              class="relative z-10 shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm border-4 border-white shadow mb-6 bg-brand-forest"
+              class="relative z-10 shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm border-4 border-white shadow mb-6 bg-brand-dark"
             >
               {{ index + 1 }}
             </div>
 
-            <div class="w-full rounded-xl border border-brand-pale/50 bg-brand-offwhite p-6 shadow-sm hover:shadow-md hover:border-brand-forest/40 transition-all">
+            <div class="w-full rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-brand-dark/40 transition-all">
               <h3 class="text-lg font-bold text-brand-black mb-2">
                 {{ step.title }}
               </h3>
-              <p class="text-brand-forest/90 leading-relaxed text-sm">
+              <p class="text-gray-600 leading-relaxed text-sm">
                 {{ step.description }}
               </p>
             </div>
