@@ -63,26 +63,26 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-20 lg:py-28 bg-white">
+  <section id="testimonials" class="relative py-20 lg:py-28 bg-brand-offwhite">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 mb-3">
+        <h2 class="text-3xl sm:text-4xl font-bold text-brand-black mb-3">
           آراء العملاء
         </h2>
-        <p class="text-lg text-stone-600">
+        <p class="text-lg text-brand-forest">
           {{ section?.title || 'انطباعات حقيقية من عملائنا' }}
         </p>
-        <p class="text-stone-500 mt-1">
+        <p class="text-brand-muted mt-1">
           {{ section?.subtitle || 'رواد أعمال وأصحاب مشاريع حققوا أهدافهم من خلال استشاراتنا' }}
         </p>
       </div>
 
       <div class="relative">
-        <div class="absolute top-0 right-4 text-[100px] text-stone-100 font-serif leading-none select-none">
+        <div class="absolute top-0 right-4 text-[100px] text-brand-pale/50 font-serif leading-none select-none">
           "
         </div>
 
-        <div class="relative bg-stone-50 rounded-2xl border border-stone-200 p-8 sm:p-10">
+        <div class="relative bg-white rounded-2xl border border-brand-pale/50 p-8 sm:p-10">
           <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
             <div class="shrink-0">
               <div
@@ -97,8 +97,7 @@ onUnmounted(() => {
               </div>
               <div
                 v-else
-                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md"
-                style="background-color: #028187; color: white;"
+              class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest text-white"
               >
                 {{ testimonials[currentIndex].avatar || '👤' }}
               </div>
@@ -109,21 +108,21 @@ onUnmounted(() => {
                 <svg
                   v-for="i in 5"
                   :key="i"
-                  class="w-5 h-5 text-amber-400"
+                  class="w-5 h-5 text-brand-forest"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </div>
-              <p class="text-lg sm:text-xl text-stone-800 leading-relaxed mb-5">
+              <p class="text-lg sm:text-xl text-brand-black leading-relaxed mb-5">
                 {{ testimonials[currentIndex].text || testimonials[currentIndex].description }}
               </p>
               <div>
-                <div class="font-bold text-stone-900">
+                <div class="font-bold text-brand-black">
                   {{ testimonials[currentIndex].name || testimonials[currentIndex].title }}
                 </div>
-                <div class="text-stone-500 text-sm">
+                <div class="text-brand-muted text-sm">
                   {{ testimonials[currentIndex].role || testimonials[currentIndex].subtitle }}
                 </div>
               </div>
@@ -138,8 +137,8 @@ onUnmounted(() => {
             :key="index"
             type="button"
             @click="goTo(index)"
-            class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#028187]"
-            :class="currentIndex === index ? 'w-8 bg-[#028187]' : 'w-2.5 bg-stone-300 hover:bg-stone-400'"
+            class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-forest"
+            :class="currentIndex === index ? 'w-8 bg-brand-forest' : 'w-2.5 bg-brand-muted/50 hover:bg-brand-muted'"
             :aria-label="`الشهادة ${index + 1}`"
           />
         </div>

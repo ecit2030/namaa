@@ -24,48 +24,42 @@ const steps = props.section.items || defaultSteps;
 </script>
 
 <template>
-  <section id="how-it-works" class="relative py-20 lg:py-28 bg-stone-50" dir="rtl">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="how-it-works" class="relative py-20 lg:py-28 bg-white" dir="rtl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 mb-2">
+        <h2 class="text-3xl sm:text-4xl font-bold text-brand-black mb-2">
           كيف يعمل
         </h2>
-        <p class="text-xl font-medium text-stone-700 mb-1">
+        <p class="text-xl font-medium text-brand-dark mb-1">
           {{ section.title || 'ثلاث خطوات بسيطة' }}
         </p>
-        <p class="text-stone-600">
+        <p class="text-brand-forest">
           {{ section.subtitle || 'للحصول على الاستشارة التي تحتاجها' }}
         </p>
       </div>
 
-      <!-- Timeline: line + nodes + content -->
-      <div class="relative pr-12 lg:pr-14">
-        <!-- Vertical line -->
+      <div class="relative">
         <div
-          class="absolute top-6 bottom-6 w-0.5 rounded-full opacity-40"
-          style="right: 1.25rem; background-color: #028187;"
+          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-40 hidden lg:block bg-brand-forest"
         />
 
-        <div class="space-y-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-6">
           <div
             v-for="(step, index) in steps"
             :key="index"
-            class="relative flex gap-6 items-start"
+            class="relative flex flex-col items-center text-center"
           >
-            <!-- Node on the line -->
             <div
-              class="absolute shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm border-4 border-stone-50 shadow timeline-node"
-              style="background-color: #028187;"
+              class="relative z-10 shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm border-4 border-white shadow mb-6 bg-brand-forest"
             >
               {{ index + 1 }}
             </div>
 
-            <!-- Content -->
-            <div class="flex-1 min-w-0 mr-14 rounded-xl border border-stone-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-[#028187]/20 transition-all">
-              <h3 class="text-lg font-bold text-stone-900 mb-2">
+            <div class="w-full rounded-xl border border-brand-pale/50 bg-brand-offwhite p-6 shadow-sm hover:shadow-md hover:border-brand-forest/40 transition-all">
+              <h3 class="text-lg font-bold text-brand-black mb-2">
                 {{ step.title }}
               </h3>
-              <p class="text-stone-600 leading-relaxed text-sm">
+              <p class="text-brand-forest/90 leading-relaxed text-sm">
                 {{ step.description }}
               </p>
             </div>
@@ -75,11 +69,3 @@ const steps = props.section.items || defaultSteps;
     </div>
   </section>
 </template>
-
-<style scoped>
-.timeline-node {
-  right: 1.25rem;
-  top: 0.25rem;
-  transform: translateX(50%);
-}
-</style>

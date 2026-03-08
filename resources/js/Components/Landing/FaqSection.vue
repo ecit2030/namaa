@@ -35,13 +35,13 @@ const toggle = (index: number) => {
 
 <template>
   <!-- New FAQ style: card list with left border accent -->
-  <section id="faq" class="relative py-20 lg:py-28 bg-stone-50 overflow-hidden">
+  <section id="faq" class="relative py-20 lg:py-28 bg-brand-offwhite overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 mb-2">
+        <h2 class="text-3xl sm:text-4xl font-bold text-brand-black mb-2">
           الأسئلة الشائعة
         </h2>
-        <p class="text-stone-600">
+        <p class="text-brand-forest">
           {{ section?.title || 'استفسارات متكررة' }}
         </p>
       </div>
@@ -51,7 +51,7 @@ const toggle = (index: number) => {
           v-for="(faq, index) in faqs"
           :key="index"
           class="group rounded-2xl overflow-hidden transition-all duration-300"
-          :class="faq.isOpen ? 'bg-white shadow-lg border border-stone-200 ring-2 ring-[#028187]/20' : 'bg-stone-50/80 border border-stone-100 hover:bg-white hover:shadow-md'"
+          :class="faq.isOpen ? 'bg-white shadow-lg border border-brand-pale/50 ring-2 ring-brand-forest/20' : 'bg-white/80 border border-brand-pale/30 hover:bg-white hover:shadow-md'"
         >
           <button
             type="button"
@@ -60,13 +60,13 @@ const toggle = (index: number) => {
           >
             <span
               class="shrink-0 w-1 rounded-full min-h-[24px] transition-colors duration-300"
-              :class="faq.isOpen ? 'bg-[#028187]' : 'bg-stone-300 group-hover:bg-[#028187]/60'"
+              :class="faq.isOpen ? 'bg-brand-forest' : 'bg-brand-muted/50 group-hover:bg-brand-forest/60'"
             />
-            <span class="text-lg font-bold text-stone-900 flex-1 pt-0.5">
+            <span class="text-lg font-bold text-brand-black flex-1 pt-0.5">
               {{ faq.question }}
             </span>
             <svg
-              class="w-5 h-5 text-stone-400 shrink-0 transition-transform duration-300 mt-0.5"
+              class="w-5 h-5 text-brand-muted shrink-0 transition-transform duration-300 mt-0.5"
               :class="faq.isOpen ? 'rotate-180' : ''"
               fill="none"
               stroke="currentColor"
@@ -85,7 +85,7 @@ const toggle = (index: number) => {
             leave-to-class="opacity-0 max-h-0"
           >
             <div v-show="faq.isOpen" class="overflow-hidden">
-              <div class="px-6 pb-5 pr-14 text-stone-600 leading-relaxed text-sm border-t border-stone-100 pt-4">
+              <div class="px-6 pb-5 pr-14 text-brand-forest/90 leading-relaxed text-sm border-t border-brand-pale/30 pt-4">
                 {{ faq.answer }}
               </div>
             </div>
