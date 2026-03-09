@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-  <footer class="bg-brand-dark text-white">
+  <footer class="text-white" style="background-color: #12392A;">
     <div id="contact" class="border-b border-white/20">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="text-center max-w-2xl mx-auto mb-8">
@@ -18,7 +18,8 @@ const currentYear = new Date().getFullYear();
           <div class="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/register"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-dark font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              style="color: #12392A;"
             >
               اعرف المزيد
             </Link>

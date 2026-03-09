@@ -24,23 +24,23 @@ const steps = props.section.items || defaultSteps;
 </script>
 
 <template>
-  <section id="how-it-works" class="relative py-20 lg:py-28 bg-white" dir="rtl">
+  <section id="how-it-works" class="relative py-20 lg:py-28 bg-brand-950" dir="rtl" style="background-color: #0E0E0E;">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-brand-black mb-2">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2">
           كيف يعمل
         </h2>
-        <p class="text-xl font-medium text-brand-dark mb-1">
+        <p class="text-xl font-medium text-white/90 mb-1">
           {{ section.title || 'ثلاث خطوات بسيطة' }}
         </p>
-        <p class="text-brand-dark/90">
+        <p class="text-white/75">
           {{ section.subtitle || 'للحصول على الاستشارة التي تحتاجها' }}
         </p>
       </div>
 
       <div class="relative">
         <div
-          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-40 hidden lg:block bg-brand-dark"
+          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-40 hidden lg:block bg-white/40"
         />
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-6">
@@ -50,16 +50,17 @@ const steps = props.section.items || defaultSteps;
             class="relative flex flex-col items-center text-center"
           >
             <div
-              class="relative z-10 shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm border-4 border-white shadow mb-6 bg-brand-dark"
+              class="relative z-10 shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-4 border-brand-500 shadow mb-6 bg-white"
+              style="color: #12392A; border-color: #12392A;"
             >
               {{ index + 1 }}
             </div>
 
-            <div class="w-full rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-brand-dark/40 transition-all">
-              <h3 class="text-lg font-bold text-brand-black mb-2">
+            <div class="w-full rounded-xl border border-white/20 bg-white/5 p-6 hover:bg-white/10 hover:border-white/30 transition-all">
+              <h3 class="text-lg font-bold text-white mb-2">
                 {{ step.title }}
               </h3>
-              <p class="text-gray-600 leading-relaxed text-sm">
+              <p class="text-white/75 leading-relaxed text-sm">
                 {{ step.description }}
               </p>
             </div>

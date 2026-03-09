@@ -31,11 +31,11 @@ const navLinks = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-brand-offwhite text-brand-black landing-bg" dir="rtl">
+  <div class="landing-page min-h-screen bg-brand-500 text-white landing-bg" dir="rtl">
     <!-- Top bar -->
     <div
       v-show="!isScrolled"
-      class="fixed top-0 left-0 right-0 z-[60] bg-brand-dark text-white text-sm py-2 hidden lg:block"
+      class="fixed top-0 left-0 right-0 z-[60] bg-brand-500 text-white text-sm py-2 hidden lg:block"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div class="flex items-center gap-6">
@@ -51,15 +51,15 @@ const navLinks = [
       </div>
     </div>
 
-    <!-- Main Header (dark when scrolled) -->
+    <!-- Main Header (always dark) -->
     <header
-      class="fixed z-50 left-0 right-0 transition-all duration-300"
-      :class="isScrolled ? 'top-0 bg-brand-dark shadow-lg border-b border-brand-dark' : 'top-10 lg:top-10 bg-white/95 backdrop-blur-sm border-b border-gray-200'"
+      class="fixed z-50 left-0 right-0 transition-all duration-300 top-10 lg:top-10 bg-brand-500 backdrop-blur-sm border-b border-white/10"
+      :class="isScrolled ? 'top-0 shadow-lg' : ''"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-18">
           <Link href="/" class="flex items-center gap-2 shrink-0">
-            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto" :class="isScrolled ? 'brightness-0 invert' : ''" />
+            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto brightness-0 invert" />
           </Link>
 
           <nav class="hidden lg:flex items-center gap-0">
@@ -67,8 +67,7 @@ const navLinks = [
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="px-4 py-2 text-sm font-medium rounded-lg transition-colors"
-              :class="isScrolled ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-brand-dark hover:text-brand-black hover:bg-gray-100'"
+              class="px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
             >
               {{ link.label }}
             </Link>
@@ -77,15 +76,13 @@ const navLinks = [
           <div class="hidden lg:flex items-center gap-3">
             <Link
               href="/login"
-              class="px-4 py-2.5 text-sm font-semibold transition-colors"
-              :class="isScrolled ? 'text-white/90 hover:text-white' : 'text-brand-dark hover:text-brand-black'"
+              class="px-4 py-2.5 text-sm font-semibold text-white/90 hover:text-white transition-colors"
             >
               انضم كمستشار
             </Link>
             <Link
               href="/register"
-              class="px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors"
-              :class="isScrolled ? 'text-brand-dark bg-white hover:bg-gray-100' : 'text-white bg-brand-dark hover:bg-brand-black'"
+              class="px-5 py-2.5 text-sm font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
               حمل التطبيق
             </Link>
@@ -93,8 +90,7 @@ const navLinks = [
 
           <button
             type="button"
-            class="lg:hidden p-2 rounded-lg transition-colors"
-            :class="isScrolled ? 'text-white hover:bg-white/10' : 'text-brand-dark hover:bg-gray-100'"
+            class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
             aria-label="القائمة"
             @click="toggleMenu"
           >
@@ -118,25 +114,23 @@ const navLinks = [
       >
         <div
           v-show="isMenuOpen"
-          class="lg:hidden border-t"
-          :class="isScrolled ? 'bg-brand-dark border-white/20' : 'bg-white border-gray-200'"
+          class="lg:hidden border-t border-white/20 bg-brand-500"
         >
           <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
             <Link
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="block px-4 py-3 text-base font-medium rounded-lg transition-colors"
-              :class="isScrolled ? 'text-white hover:bg-white/10' : 'text-brand-dark hover:bg-gray-100'"
+              class="block px-4 py-3 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
               @click="isMenuOpen = false"
             >
               {{ link.label }}
             </Link>
             <div class="pt-4 flex flex-col gap-2">
-              <Link href="/login" class="text-center px-4 py-3 font-semibold rounded-lg transition-colors" :class="isScrolled ? 'text-white border border-white/50 hover:bg-white/10' : 'text-brand-dark border border-gray-300 hover:bg-gray-100'" @click="isMenuOpen = false">
+              <Link href="/login" class="text-center px-4 py-3 font-semibold text-white border border-white/50 rounded-lg hover:bg-white/10 transition-colors" @click="isMenuOpen = false">
                 انضم كمستشار
               </Link>
-              <Link href="/register" class="text-center px-4 py-3 font-semibold rounded-lg transition-colors" :class="isScrolled ? 'bg-white text-brand-dark hover:bg-gray-100' : 'text-white bg-brand-dark hover:bg-brand-black'" @click="isMenuOpen = false">
+              <Link href="/register" class="text-center px-4 py-3 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
                 حمل التطبيق
               </Link>
             </div>
@@ -152,6 +146,10 @@ const navLinks = [
 </template>
 
 <style scoped>
+.landing-page {
+  background-color: #12392A !important;
+  color: #ffffff !important;
+}
 [dir="rtl"] {
   direction: rtl;
 }
@@ -166,8 +164,8 @@ const navLinks = [
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(18, 57, 42, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(18, 57, 42, 0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
   animation: landing-bg-shift 18s ease-in-out infinite;
 }
 .landing-bg > * {

@@ -41,7 +41,13 @@ layer(base);
   --color-white: #ffffff;
   --color-black: #101828;
 
-  /* CASB / نماء – أخضر غامق مع أبيض */
+  /* CASB / نماء – dark theme (named + scale) */
+  --color-brand-dark: #12392A;
+  --color-brand-forest: #2F684F;
+  --color-brand-muted: #A58DA0;
+  --color-brand-pale: #A0BDA0;
+  --color-brand-offwhite: #F5F7F6;
+  --color-brand-black: #0E0E0E;
   --color-brand-25: #ffffff;
   --color-brand-50: #f5f7f6;
   --color-brand-100: #e8eeeb;
