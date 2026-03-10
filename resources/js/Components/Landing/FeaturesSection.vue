@@ -57,7 +57,7 @@ const getIconPath = (iconName: string) => {
         <article
           v-for="(feature, index) in features"
           :key="index"
-          class="feature-card rounded-2xl border border-gray-200 bg-brand-offwhite/50 p-6 lg:p-8 hover:bg-brand-50 hover:border-brand-200 transition-all duration-300"
+          class="feature-card rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:bg-brand-50 hover:border-brand-200 transition-all duration-300"
         >
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-forest/15 text-brand-500 mb-5">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

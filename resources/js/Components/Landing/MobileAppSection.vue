@@ -5,6 +5,7 @@ interface FeatureItem {
   title: string;
   description: string;
   image?: string;
+  icon?: string;
   background_color?: string;
 }
 
@@ -20,19 +21,28 @@ interface Props {
 const props = defineProps<Props>();
 
 const defaultFeatures: FeatureItem[] = [
-  { title: 'أدر عملك من لوحة تحكم متنقلة', description: 'تابع حجوزاتك، عملائك، وأرباحك من هاتفك المحمول بسهولة', background_color: 'from-brand-dark/5 to-white' },
-  { title: 'أضف خدماتك وحدد أسعارك', description: 'دراسات جدوى، تحليل مالي، خطط أعمال - قدم خدماتك بأسعارك الخاصة', background_color: 'from-brand-dark/5 to-white' },
-  { title: 'وسع نطاق عملك', description: 'عروض متعددة، إشعارات فورية، محفظة إلكترونية، تقارير تفصيلية', background_color: 'from-brand-dark/5 to-white' },
+  { title: 'أدر عملك من لوحة تحكم متنقلة', description: 'تابع حجوزاتك، عملائك، وأرباحك من هاتفك المحمول بسهولة', icon: 'mobile', background_color: 'from-brand-dark/5 to-white' },
+  { title: 'أضف خدماتك وحدد أسعارك', description: 'دراسات جدوى، تحليل مالي، خطط أعمال - قدم خدماتك بأسعارك الخاصة', icon: 'tag', background_color: 'from-brand-dark/5 to-white' },
+  { title: 'وسع نطاق عملك', description: 'عروض متعددة، إشعارات فورية، محفظة إلكترونية، تقارير تفصيلية', icon: 'chart-up', background_color: 'from-brand-dark/5 to-white' },
 ];
 
 const features = computed(() => props.section?.items || defaultFeatures);
 
 const getBg = (f: FeatureItem, i: number) =>
   f.background_color || 'from-brand-dark/5 to-white';
+
+const getFeatureIconPath = (iconName: string) => {
+  const paths: Record<string, string> = {
+    mobile: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
+    tag: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z',
+    'chart-up': 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+  };
+  return paths[iconName] || paths.mobile;
+};
 </script>
 
 <template>
-  <section id="mobile-app" class="relative py-20 lg:py-28 bg-brand-offwhite">
+  <section id="mobile-app" class="relative py-20 lg:py-28 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-10 mx-auto mb-6 object-contain" />
@@ -79,9 +89,11 @@ const getBg = (f: FeatureItem, i: number) =>
           </div>
           <div
             v-else
-            class="w-16 h-24 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500"
+            class="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500"
           >
-            <img src="/images/logo/logo-icon.png" alt="" class="w-10 h-10 opacity-90" />
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" :d="getFeatureIconPath(feature.icon || 'mobile')" />
+            </svg>
           </div>
           <h3 class="text-lg font-bold text-brand-dark mb-2 text-center">
             {{ feature.title }}

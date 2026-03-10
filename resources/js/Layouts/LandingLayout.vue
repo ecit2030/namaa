@@ -32,7 +32,7 @@ const navLinks = [
 </script>
 
 <template>
-  <div class="landing-page min-h-screen landing-bg bg-brand-offwhite text-brand-dark" dir="rtl">
+  <div class="landing-page min-h-screen landing-bg bg-white text-brand-dark" dir="rtl">
     <!-- Main Header - dark green -->
     <header
       class="fixed z-50 left-0 right-0 top-0 transition-all duration-300 bg-brand-500 backdrop-blur-md border-b border-white/10 shadow-md"

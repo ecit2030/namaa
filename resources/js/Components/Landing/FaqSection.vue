@@ -35,7 +35,7 @@ const toggle = (index: number) => {
 
 <template>
   <!-- Light FAQ section -->
-  <section id="faq" class="relative py-20 lg:py-28 bg-brand-offwhite overflow-hidden">
+  <section id="faq" class="relative py-20 lg:py-28 bg-white overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-2">

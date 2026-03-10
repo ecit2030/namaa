@@ -82,7 +82,7 @@ onUnmounted(() => {
           "
         </div>
 
-        <div class="relative rounded-2xl border border-gray-200 bg-brand-offwhite/70 p-8 sm:p-10 ring-1 ring-gray-100">
+        <div class="relative rounded-2xl border border-gray-200 bg-white p-8 sm:p-10 ring-1 ring-gray-100">
           <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
             <div class="shrink-0">
               <div
