@@ -41,7 +41,7 @@ const navLinks = [
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-18">
           <Link href="/" class="flex items-center gap-2 shrink-0">
-            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto landing-logo header-logo" />
+            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto header-logo" />
           </Link>
 
           <nav class="hidden lg:flex items-center gap-0">
