@@ -83,10 +83,6 @@ defineProps<Props>();
                 alt="استشارة مالية"
                 class="w-full h-full object-cover"
               />
-              <div class="absolute bottom-3 left-3 flex items-center gap-2 rounded-lg bg-brand-500/90 px-3 py-2 shadow-lg">
-                <img src="/images/logo/logo-icon.png" alt="نماء" class="h-8 w-8 brightness-0 invert" />
-                <span class="text-sm font-semibold text-white">نماء الأعمال</span>
-              </div>
             </div>
           </div>
         </div>
