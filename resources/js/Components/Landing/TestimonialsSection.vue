@@ -63,31 +63,31 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-20 lg:py-28 bg-brand-950">
+  <section id="testimonials" class="relative py-20 lg:py-28 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">
+        <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
           آراء العملاء
         </h2>
-        <p class="text-lg text-white/90">
+        <p class="text-lg text-gray-600">
           {{ section?.title || 'انطباعات حقيقية من عملائنا' }}
         </p>
-        <p class="text-white/70 mt-1">
+        <p class="text-brand-muted mt-1">
           {{ section?.subtitle || 'رواد أعمال وأصحاب مشاريع حققوا أهدافهم من خلال استشاراتنا' }}
         </p>
       </div>
 
       <div class="relative">
-        <div class="absolute top-0 right-4 text-[100px] text-brand-forest/20 font-serif leading-none select-none" aria-hidden="true">
+        <div class="absolute top-0 right-4 text-[100px] text-brand-pale/40 font-serif leading-none select-none" aria-hidden="true">
           "
         </div>
 
-        <div class="relative rounded-2xl border border-white/15 bg-white/[0.06] p-8 sm:p-10 ring-1 ring-white/10">
+        <div class="relative rounded-2xl border border-gray-200 bg-brand-offwhite/70 p-8 sm:p-10 ring-1 ring-gray-100">
           <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
             <div class="shrink-0">
               <div
                 v-if="testimonials[currentIndex].image"
-                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden border-2 border-white/20 shadow-md"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden border-2 border-brand-200 shadow-md"
               >
                 <img
                   :src="`/storage/${testimonials[currentIndex].image}`"
@@ -97,7 +97,7 @@ onUnmounted(() => {
               </div>
               <div
                 v-else
-                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest/40 text-white"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest/20 text-brand-500"
               >
                 {{ testimonials[currentIndex].avatar || '👤' }}
               </div>
@@ -108,21 +108,21 @@ onUnmounted(() => {
                 <svg
                   v-for="i in 5"
                   :key="i"
-                  class="w-5 h-5 text-white/90"
+                  class="w-5 h-5 text-brand-forest"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </div>
-              <p class="text-lg sm:text-xl text-white leading-relaxed mb-5">
+              <p class="text-lg sm:text-xl text-brand-dark leading-relaxed mb-5">
                 {{ testimonials[currentIndex].text || testimonials[currentIndex].description }}
               </p>
               <div>
-                <div class="font-bold text-white">
+                <div class="font-bold text-brand-500">
                   {{ testimonials[currentIndex].name || testimonials[currentIndex].title }}
                 </div>
-                <div class="text-white/70 text-sm">
+                <div class="text-brand-muted text-sm">
                   {{ testimonials[currentIndex].role || testimonials[currentIndex].subtitle }}
                 </div>
               </div>
@@ -130,15 +130,14 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Dots only - no arrows; clickable; auto-play -->
         <div class="flex items-center justify-center gap-2 mt-6">
           <button
             v-for="(_, index) in testimonials"
             :key="index"
             type="button"
             @click="goTo(index)"
-            class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
-            :class="currentIndex === index ? 'w-8 bg-brand-forest' : 'w-2.5 bg-white/30 hover:bg-white/50'"
+            class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500"
+            :class="currentIndex === index ? 'w-8 bg-brand-forest' : 'w-2.5 bg-brand-200 hover:bg-brand-300'"
             :aria-label="`الشهادة ${index + 1}`"
           />
         </div>

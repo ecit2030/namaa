@@ -32,14 +32,14 @@ const getBg = (f: FeatureItem, i: number) =>
 </script>
 
 <template>
-  <section id="mobile-app" class="relative py-20 lg:py-28 bg-brand-950">
+  <section id="mobile-app" class="relative py-20 lg:py-28 bg-brand-offwhite">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
-        <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-10 mx-auto mb-6 object-contain brightness-0 invert" />
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">
+        <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-10 mx-auto mb-6 object-contain" />
+        <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
           انضم كمستشار
         </h2>
-        <p class="text-lg text-white/90 max-w-2xl mx-auto mb-8">
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
           {{ section?.title || 'وسّع قاعدة عملائك وزد دخلك من خلال تقديم خدماتك عبر منصتنا' }}
         </p>
 
@@ -69,24 +69,24 @@ const getBg = (f: FeatureItem, i: number) =>
         <article
           v-for="(feature, index) in features"
           :key="index"
-          class="rounded-2xl border border-white/15 bg-white/[0.06] p-6 lg:p-8 hover:bg-white/[0.1] hover:border-white/25 transition-all"
+          class="rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:border-brand-200 hover:shadow-md transition-all"
         >
           <div
             v-if="feature.image"
-            class="aspect-[3/4] max-w-[180px] mx-auto mb-5 rounded-xl overflow-hidden bg-white/10"
+            class="aspect-[3/4] max-w-[180px] mx-auto mb-5 rounded-xl overflow-hidden bg-brand-50"
           >
             <img :src="`/storage/${feature.image}`" :alt="feature.title" class="w-full h-full object-cover" />
           </div>
           <div
             v-else
-            class="w-16 h-24 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/30 text-white"
+            class="w-16 h-24 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500"
           >
-            <img src="/images/logo/logo-icon.png" alt="" class="w-10 h-10 opacity-90 brightness-0 invert" />
+            <img src="/images/logo/logo-icon.png" alt="" class="w-10 h-10 opacity-90" />
           </div>
-          <h3 class="text-lg font-bold text-white mb-2 text-center">
+          <h3 class="text-lg font-bold text-brand-dark mb-2 text-center">
             {{ feature.title }}
           </h3>
-          <p class="text-white/80 leading-relaxed text-sm text-center">
+          <p class="text-gray-600 leading-relaxed text-sm text-center">
             {{ feature.description }}
           </p>
         </article>
@@ -97,10 +97,10 @@ const getBg = (f: FeatureItem, i: number) =>
 
 <style scoped>
 .store-btn {
-  background-color: var(--color-white);
-  color: var(--color-brand-500);
+  background-color: var(--color-brand-500);
+  color: var(--color-white);
 }
 .store-btn:hover {
-  background-color: #f3f4f6;
+  background-color: #0f2f23;
 }
 </style>

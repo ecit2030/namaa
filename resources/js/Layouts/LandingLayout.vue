@@ -14,6 +14,7 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
+  document.documentElement.classList.remove('dark');
   window.addEventListener('scroll', handleScroll, { passive: true });
 });
 onUnmounted(() => {
@@ -31,35 +32,35 @@ const navLinks = [
 </script>
 
 <template>
-  <div class="landing-page min-h-screen text-white landing-bg" dir="rtl">
-    <!-- Top bar -->
+  <div class="landing-page min-h-screen landing-bg bg-brand-offwhite text-brand-dark" dir="rtl">
+    <!-- Top bar - light -->
     <div
       v-show="!isScrolled"
-      class="fixed top-0 left-0 right-0 z-[60] bg-brand-500 text-white text-sm py-2 hidden lg:block"
+      class="fixed top-0 left-0 right-0 z-[60] bg-white border-b border-gray-200 text-gray-600 text-sm py-2 hidden lg:block"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div class="flex items-center gap-6">
-          <a href="tel:+966501234567" class="hover:text-white transition-colors">+966 50 123 4567</a>
-          <a href="mailto:info@consultant-platform.com" class="hover:text-white transition-colors">info@consultant-platform.com</a>
+          <a href="tel:+966501234567" class="hover:text-brand-500 transition-colors">+966 50 123 4567</a>
+          <a href="mailto:info@consultant-platform.com" class="hover:text-brand-500 transition-colors">info@consultant-platform.com</a>
         </div>
         <Link
           href="#contact"
-          class="font-semibold text-white/90 hover:text-white transition-colors"
+          class="font-semibold text-brand-500 hover:text-brand-600 transition-colors"
         >
           تواصل معنا
         </Link>
       </div>
     </div>
 
-    <!-- Main Header (always dark) -->
+    <!-- Main Header - light, professional -->
     <header
-      class="fixed z-50 left-0 right-0 transition-all duration-300 top-10 lg:top-10 bg-brand-500 backdrop-blur-sm border-b border-white/10"
-      :class="isScrolled ? 'top-0 shadow-lg' : ''"
+      class="fixed z-50 left-0 right-0 transition-all duration-300 top-10 lg:top-10 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+      :class="isScrolled ? 'top-0 shadow-md' : ''"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-18">
           <Link href="/" class="flex items-center gap-2 shrink-0">
-            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto brightness-0 invert" />
+            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto landing-logo" />
           </Link>
 
           <nav class="hidden lg:flex items-center gap-0">
@@ -67,7 +68,7 @@ const navLinks = [
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+              class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-lg transition-colors"
             >
               {{ link.label }}
             </Link>
@@ -76,13 +77,13 @@ const navLinks = [
           <div class="hidden lg:flex items-center gap-3">
             <Link
               href="/login"
-              class="px-4 py-2.5 text-sm font-semibold text-white/90 hover:text-white transition-colors"
+              class="px-4 py-2.5 text-sm font-semibold text-brand-500 hover:text-brand-600 transition-colors"
             >
               انضم كمستشار
             </Link>
             <Link
               href="/register"
-              class="px-5 py-2.5 text-sm font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+              class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-500 rounded-lg hover:bg-brand-600 transition-colors"
             >
               حمل التطبيق
             </Link>
@@ -90,7 +91,7 @@ const navLinks = [
 
           <button
             type="button"
-            class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+            class="lg:hidden p-2 rounded-lg text-brand-500 hover:bg-brand-50 transition-colors"
             aria-label="القائمة"
             @click="toggleMenu"
           >
@@ -114,23 +115,23 @@ const navLinks = [
       >
         <div
           v-show="isMenuOpen"
-          class="lg:hidden border-t border-white/20 bg-brand-500"
+          class="lg:hidden border-t border-gray-200 bg-white"
         >
           <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
             <Link
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="block px-4 py-3 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
+              class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-500 rounded-lg transition-colors"
               @click="isMenuOpen = false"
             >
               {{ link.label }}
             </Link>
             <div class="pt-4 flex flex-col gap-2">
-              <Link href="/login" class="text-center px-4 py-3 font-semibold text-white border border-white/50 rounded-lg hover:bg-white/10 transition-colors" @click="isMenuOpen = false">
+              <Link href="/login" class="text-center px-4 py-3 font-semibold text-brand-500 border border-brand-500 rounded-lg hover:bg-brand-50 transition-colors" @click="isMenuOpen = false">
                 انضم كمستشار
               </Link>
-              <Link href="/register" class="text-center px-4 py-3 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
+              <Link href="/register" class="text-center px-4 py-3 font-semibold text-white bg-brand-500 rounded-lg hover:bg-brand-600 transition-colors" @click="isMenuOpen = false">
                 حمل التطبيق
               </Link>
             </div>
@@ -146,15 +147,13 @@ const navLinks = [
 </template>
 
 <style scoped>
-.landing-page {
-  background-color: var(--color-brand-500);
-  color: var(--color-white);
+.landing-logo {
+  filter: none;
 }
 [dir="rtl"] {
   direction: rtl;
 }
 
-/* Subtle background motion */
 .landing-bg {
   position: relative;
 }
@@ -164,8 +163,8 @@ const navLinks = [
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(18, 57, 42, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(47, 104, 79, 0.04) 0%, transparent 50%);
   animation: landing-bg-shift 18s ease-in-out infinite;
 }
 .landing-bg > * {
@@ -174,6 +173,6 @@ const navLinks = [
 }
 @keyframes landing-bg-shift {
   0%, 100% { opacity: 1; transform: scale(1) translate(0, 0); }
-  50% { opacity: 0.9; transform: scale(1.02) translate(-1%, -0.5%); }
+  50% { opacity: 0.95; transform: scale(1.01) translate(-0.5%, -0.25%); }
 }
 </style>
