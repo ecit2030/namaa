@@ -132,7 +132,7 @@ const navLinks = [
   filter: none;
 }
 .header-logo {
-  mix-blend-mode: lighten;
+  mix-blend-mode: screen;
 }
 [dir="rtl"] {
   direction: rtl;
