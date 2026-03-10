@@ -33,15 +33,15 @@ const navLinks = [
 
 <template>
   <div class="landing-page min-h-screen landing-bg bg-brand-offwhite text-brand-dark" dir="rtl">
-    <!-- Main Header - light, professional -->
+    <!-- Main Header - dark green -->
     <header
-      class="fixed z-50 left-0 right-0 top-0 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
-      :class="isScrolled ? 'shadow-md' : ''"
+      class="fixed z-50 left-0 right-0 top-0 transition-all duration-300 bg-brand-500 backdrop-blur-md border-b border-white/10 shadow-md"
+      :class="isScrolled ? 'shadow-lg' : ''"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-18">
           <Link href="/" class="flex items-center gap-2 shrink-0">
-            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto landing-logo" />
+            <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto landing-logo header-logo" />
           </Link>
 
           <nav class="hidden lg:flex items-center gap-0">
@@ -49,7 +49,7 @@ const navLinks = [
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-lg transition-colors"
+              class="px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
             >
               {{ link.label }}
             </Link>
@@ -58,13 +58,13 @@ const navLinks = [
           <div class="hidden lg:flex items-center gap-3">
             <Link
               href="/login"
-              class="px-4 py-2.5 text-sm font-semibold text-brand-500 hover:text-brand-600 transition-colors"
+              class="px-4 py-2.5 text-sm font-semibold text-white/90 hover:text-white transition-colors"
             >
               انضم كمستشار
             </Link>
             <Link
               href="/register"
-              class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-500 rounded-lg hover:bg-brand-600 transition-colors"
+              class="px-5 py-2.5 text-sm font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
               حمل التطبيق
             </Link>
@@ -72,7 +72,7 @@ const navLinks = [
 
           <button
             type="button"
-            class="lg:hidden p-2 rounded-lg text-brand-500 hover:bg-brand-50 transition-colors"
+            class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
             aria-label="القائمة"
             @click="toggleMenu"
           >
@@ -96,23 +96,23 @@ const navLinks = [
       >
         <div
           v-show="isMenuOpen"
-          class="lg:hidden border-t border-gray-200 bg-white"
+          class="lg:hidden border-t border-white/20 bg-brand-500"
         >
           <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
             <Link
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-500 rounded-lg transition-colors"
+              class="block px-4 py-3 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
               @click="isMenuOpen = false"
             >
               {{ link.label }}
             </Link>
             <div class="pt-4 flex flex-col gap-2">
-              <Link href="/login" class="text-center px-4 py-3 font-semibold text-brand-500 border border-brand-500 rounded-lg hover:bg-brand-50 transition-colors" @click="isMenuOpen = false">
+              <Link href="/login" class="text-center px-4 py-3 font-semibold text-white border border-white/50 rounded-lg hover:bg-white/10 transition-colors" @click="isMenuOpen = false">
                 انضم كمستشار
               </Link>
-              <Link href="/register" class="text-center px-4 py-3 font-semibold text-white bg-brand-500 rounded-lg hover:bg-brand-600 transition-colors" @click="isMenuOpen = false">
+              <Link href="/register" class="text-center px-4 py-3 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
                 حمل التطبيق
               </Link>
             </div>
@@ -130,6 +130,9 @@ const navLinks = [
 <style scoped>
 .landing-logo {
   filter: none;
+}
+.header-logo {
+  filter: brightness(0) invert(1);
 }
 [dir="rtl"] {
   direction: rtl;
