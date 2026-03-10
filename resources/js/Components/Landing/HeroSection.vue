@@ -16,13 +16,33 @@ defineProps<Props>();
 </script>
 
 <template>
-  <!-- Light hero - white background, text only, aligned top -->
-  <section class="relative min-h-[70vh] flex items-start overflow-hidden bg-white">
+  <!-- Light hero - image on left, text on right -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(18,57,42,0.03),transparent_50%)]" aria-hidden="true" />
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 lg:pt-10 lg:pb-24">
-      <div class="max-w-3xl">
-        <div class="text-center lg:text-right">
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Image on the left (order-2 in RTL = visual left) -->
+        <div class="order-1 lg:order-2 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-xl ring-1 ring-gray-100">
+              <img
+                v-if="section.image"
+                :src="`/storage/${section.image}`"
+                alt="استشارة مالية"
+                class="w-full h-auto object-cover"
+              />
+              <img
+                v-else
+                src="/images/landing/hero-financial.png"
+                alt="استشارة مالية ومحاسبية"
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Text on the right -->
+        <div class="order-2 lg:order-1 text-center lg:text-right">
           <p class="text-brand-forest text-sm font-semibold uppercase tracking-wider mb-4">
             استشارات مالية ومحاسبية
           </p>
