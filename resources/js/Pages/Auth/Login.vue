@@ -1,6 +1,6 @@
 <template>
   <FullScreenLayout>
-    <div class="relative p-6 bg-white z-1 dark:bg-gray-900 sm:p-0">
+    <div class="relative p-6 bg-white z-1 dark:bg-gray-900 sm:p-0" :dir="currentLocale === 'ar' ? 'rtl' : 'ltr'">
       <div
         class="relative flex flex-col justify-center w-full h-screen lg:flex-row dark:bg-gray-900"
       >
@@ -188,19 +188,13 @@
           </div>
         </div>
         <div
-          class="relative items-center hidden w-full h-full lg:w-1/2 bg-brand-950 dark:bg-white/5 lg:grid"
+          class="relative items-center justify-center hidden w-full h-full lg:w-1/2 bg-brand-950 dark:bg-white/5 lg:flex overflow-hidden"
         >
-          <div class="flex items-center justify-center z-1">
-            <common-grid-shape />
-            <div class="flex flex-col items-center max-w-xs">
-              <Link href="/" class="block mb-4">
-                <img width="{231}" height="{48}" src="/images/logo/logo.png" alt="Logo" />
-              </Link>
-                <p class="text-center text-gray-400 dark:text-white/60">
-                {{ t('auth.login.tagline') }}
-              </p>
-            </div>
-          </div>
+          <img
+            src="/images/auth/login-hero.png"
+            alt="استشارات مالية ومحاسبية"
+            class="w-full h-full object-cover object-center"
+          />
         </div>
       </div>
     </div>
@@ -211,7 +205,6 @@
 import { ref, computed } from 'vue'
 import { Link, useForm, router } from '@inertiajs/vue3'
 import { route } from '@/route'
-import CommonGridShape from '@/Components/common/CommonGridShape.vue'
 import FullScreenLayout from '@/Components/layout/FullScreenLayout.vue'
 import { useI18n } from 'vue-i18n'
 import { applyDirection } from '@/utils/direction'
