@@ -63,7 +63,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-20 lg:py-28 bg-brand-950" style="background-color: #0E0E0E;">
+  <section id="testimonials" class="relative py-20 lg:py-28 bg-brand-950">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">
@@ -72,17 +72,17 @@ onUnmounted(() => {
         <p class="text-lg text-white/90">
           {{ section?.title || 'انطباعات حقيقية من عملائنا' }}
         </p>
-        <p class="text-white/60 mt-1">
+        <p class="text-white/70 mt-1">
           {{ section?.subtitle || 'رواد أعمال وأصحاب مشاريع حققوا أهدافهم من خلال استشاراتنا' }}
         </p>
       </div>
 
       <div class="relative">
-        <div class="absolute top-0 right-4 text-[100px] text-white/10 font-serif leading-none select-none">
+        <div class="absolute top-0 right-4 text-[100px] text-brand-forest/20 font-serif leading-none select-none" aria-hidden="true">
           "
         </div>
 
-        <div class="relative bg-white/5 rounded-2xl border border-white/20 p-8 sm:p-10">
+        <div class="relative rounded-2xl border border-white/15 bg-white/[0.06] p-8 sm:p-10 ring-1 ring-white/10">
           <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
             <div class="shrink-0">
               <div
@@ -97,7 +97,7 @@ onUnmounted(() => {
               </div>
               <div
                 v-else
-                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-white/20 text-white"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest/40 text-white"
               >
                 {{ testimonials[currentIndex].avatar || '👤' }}
               </div>
@@ -138,7 +138,7 @@ onUnmounted(() => {
             type="button"
             @click="goTo(index)"
             class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
-            :class="currentIndex === index ? 'w-8 bg-white' : 'w-2.5 bg-white/30 hover:bg-white/50'"
+            :class="currentIndex === index ? 'w-8 bg-brand-forest' : 'w-2.5 bg-white/30 hover:bg-white/50'"
             :aria-label="`الشهادة ${index + 1}`"
           />
         </div>

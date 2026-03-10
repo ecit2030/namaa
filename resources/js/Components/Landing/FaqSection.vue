@@ -35,13 +35,13 @@ const toggle = (index: number) => {
 
 <template>
   <!-- Dark FAQ section -->
-  <section id="faq" class="relative py-20 lg:py-28 bg-brand-500 overflow-hidden" style="background-color: #12392A;">
+  <section id="faq" class="relative py-20 lg:py-28 bg-brand-500 overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2">
           الأسئلة الشائعة
         </h2>
-        <p class="text-white/80">
+        <p class="text-white/85">
           {{ section?.title || 'استفسارات متكررة' }}
         </p>
       </div>
@@ -51,16 +51,16 @@ const toggle = (index: number) => {
           v-for="(faq, index) in faqs"
           :key="index"
           class="group rounded-2xl overflow-hidden transition-all duration-300"
-          :class="faq.isOpen ? 'bg-white/10 border border-white/20 ring-2 ring-white/20' : 'bg-white/5 border border-white/10 hover:bg-white/10'"
+          :class="faq.isOpen ? 'bg-white/[0.08] border border-white/20 ring-2 ring-brand-forest/30' : 'bg-white/[0.05] border border-white/15 hover:bg-white/[0.08]'"
         >
           <button
             type="button"
-            class="w-full text-right flex items-start gap-4 px-6 py-5 transition-colors"
+            class="w-full text-right flex items-start gap-4 px-6 py-5 transition-colors focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/30"
             @click="toggle(index)"
           >
             <span
-              class="shrink-0 w-1 rounded-full min-h-[24px] transition-colors duration-300"
-              :class="faq.isOpen ? 'bg-white' : 'bg-white/40 group-hover:bg-white/60'"
+              class="faq-bar shrink-0 w-1 rounded-full min-h-[24px] transition-colors duration-300"
+              :class="faq.isOpen ? 'faq-bar-open' : 'bg-white/40 group-hover:bg-white/60'"
             />
             <span class="text-lg font-bold text-white flex-1 pt-0.5">
               {{ faq.question }}
@@ -85,7 +85,7 @@ const toggle = (index: number) => {
             leave-to-class="opacity-0 max-h-0"
           >
             <div v-show="faq.isOpen" class="overflow-hidden">
-              <div class="px-6 pb-5 pr-14 text-white/80 leading-relaxed text-sm border-t border-white/10 pt-4">
+              <div class="px-6 pb-5 pr-14 text-white/85 leading-relaxed text-sm border-t border-white/15 pt-4">
                 {{ faq.answer }}
               </div>
             </div>
@@ -95,3 +95,9 @@ const toggle = (index: number) => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.faq-bar-open {
+  background-color: var(--color-brand-forest);
+}
+</style>

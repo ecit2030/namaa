@@ -17,26 +17,28 @@ defineProps<Props>();
 
 <template>
   <!-- Dark hero -->
-  <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-brand-500" style="background-color: #12392A;">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(255,255,255,0.04),transparent)]" />
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-brand-500">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(255,255,255,0.05),transparent_50%)]" aria-hidden="true" />
 
     <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="text-center lg:text-right order-2 lg:order-1">
+          <p class="text-brand-pale text-sm font-medium uppercase tracking-wider mb-4">
+            استشارات مالية ومحاسبية
+          </p>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.2] tracking-tight mb-6">
             {{ section.title || 'خُذ قراراتك بثقة مع خبراء مال وأعمال بجانبك' }}
           </h1>
-          <p class="text-lg sm:text-xl text-white/85 max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed">
+          <p class="text-lg sm:text-xl text-white/90 max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed">
             {{ section.subtitle || 'من تحليل القوائم المالية إلى دراسة الجدوى وخطط النمو، كل ما تحتاجه في مكان واحد.' }}
           </p>
-          <p class="text-white/60 text-sm mb-10">
+          <p class="text-white/70 text-sm mb-10">
             مستشارون معتمدون • جلسات مباشرة • تقارير احترافية
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link
               href="/register"
-              class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-              style="color: #12392A;"
+              class="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
             >
               طلب استشارة
               <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -45,12 +47,12 @@ defineProps<Props>();
             </Link>
             <Link
               href="#services"
-              class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border-2 border-white/50 rounded-lg hover:bg-white/10 transition-colors"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border-2 border-white/40 rounded-xl hover:bg-white/10 hover:border-white/60 transition-all"
             >
               استكشف خدماتنا
             </Link>
           </div>
-          <div class="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-white/60 text-sm">
+          <div class="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-white/70 text-sm">
             <span class="flex items-center gap-2">
               <span class="font-bold text-white">+50</span>
               مستشار معتمد
@@ -68,7 +70,7 @@ defineProps<Props>();
         <div class="order-1 lg:order-2 flex justify-center">
           <div class="relative">
             <div class="absolute -inset-4 bg-white/10 rounded-2xl blur-2xl" />
-            <div class="relative aspect-[4/3] max-w-md w-full rounded-2xl overflow-hidden border border-white/20 bg-white/5 shadow-2xl">
+            <div class="relative aspect-[4/3] max-w-md w-full rounded-2xl overflow-hidden border border-white/15 bg-white/[0.07] shadow-2xl ring-1 ring-white/10">
               <img
                 v-if="section.image"
                 :src="`/storage/${section.image}`"
@@ -95,3 +97,13 @@ defineProps<Props>();
     </div>
   </section>
 </template>
+
+<style scoped>
+.btn-primary {
+  background-color: var(--color-white);
+  color: var(--color-brand-500);
+}
+.btn-primary:hover {
+  background-color: #f3f4f6;
+}
+</style>

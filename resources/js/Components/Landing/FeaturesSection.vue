@@ -39,16 +39,16 @@ const getIconPath = (iconName: string) => {
 
 <template>
   <!-- Dark section: features -->
-  <section id="features" class="relative py-20 lg:py-28 bg-brand-500" style="background-color: #12392A;">
+  <section id="features" class="relative py-20 lg:py-28 bg-brand-500">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">
           {{ section.title || 'لماذا تختار منصتنا؟' }}
         </h2>
-        <p class="text-lg text-white/85 mb-2">
+        <p class="text-lg text-white/90 mb-2">
           {{ section.subtitle || 'كل ما تحتاجه لاستشارات مالية ومحاسبية احترافية بسهولة وأمان' }}
         </p>
-        <p class="text-white/60 font-medium">
+        <p class="text-white/70 font-medium">
           يثق بنا آلاف رواد الأعمال وأصحاب المشاريع
         </p>
       </div>
@@ -57,9 +57,9 @@ const getIconPath = (iconName: string) => {
         <article
           v-for="(feature, index) in features"
           :key="index"
-          class="bg-white/5 rounded-xl border border-white/10 p-6 lg:p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          class="feature-card rounded-2xl border border-white/15 bg-white/[0.06] p-6 lg:p-8 hover:bg-white/[0.1] hover:border-white/25 transition-all duration-300"
         >
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-white/10 text-white mb-5">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-forest/30 text-white mb-5">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="getIconPath(feature.icon)" />
             </svg>
@@ -67,12 +67,12 @@ const getIconPath = (iconName: string) => {
           <h3 class="text-lg font-bold text-white mb-2">
             {{ feature.title }}
           </h3>
-          <p class="text-white/75 leading-relaxed text-sm">
+          <p class="text-white/80 leading-relaxed text-sm">
             {{ feature.description }}
           </p>
           <div
             v-if="index === 0"
-            class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 text-white text-xs font-medium"
+            class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-forest/20 text-white/95 text-xs font-medium"
           >
             حمل التطبيق الآن
           </div>

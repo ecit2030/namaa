@@ -31,7 +31,7 @@ const navLinks = [
 </script>
 
 <template>
-  <div class="landing-page min-h-screen bg-brand-500 text-white landing-bg" dir="rtl">
+  <div class="landing-page min-h-screen text-white landing-bg" dir="rtl">
     <!-- Top bar -->
     <div
       v-show="!isScrolled"
@@ -147,8 +147,8 @@ const navLinks = [
 
 <style scoped>
 .landing-page {
-  background-color: #12392A !important;
-  color: #ffffff !important;
+  background-color: var(--color-brand-500);
+  color: var(--color-white);
 }
 [dir="rtl"] {
   direction: rtl;

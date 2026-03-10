@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 </script>
 
 <template>
-  <footer class="text-white" style="background-color: #12392A;">
+  <footer class="bg-brand-500 text-white">
     <div id="contact" class="border-b border-white/20">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="text-center max-w-2xl mx-auto mb-8">
@@ -18,14 +18,13 @@ const currentYear = new Date().getFullYear();
           <div class="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/register"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-white font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-              style="color: #12392A;"
+              class="footer-cta-primary inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-xl transition-all hover:shadow-lg"
             >
               اعرف المزيد
             </Link>
             <Link
               href="#services"
-              class="inline-flex items-center gap-2 px-6 py-3 border border-white/50 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+              class="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white/60 transition-all"
             >
               استكشف خدماتنا
             </Link>
@@ -61,11 +60,11 @@ const currentYear = new Date().getFullYear();
         <div>
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">روابط مهمة</h4>
           <ul class="space-y-3 text-sm">
-            <li><Link href="/" class="hover:text-white transition-colors">الرئيسية</Link></li>
-            <li><Link href="#features" class="hover:text-white transition-colors">المميزات</Link></li>
-            <li><Link href="#services" class="hover:text-white transition-colors">خدماتنا</Link></li>
-            <li><Link href="#faq" class="hover:text-white transition-colors">الأسئلة الشائعة</Link></li>
-            <li><Link href="#contact" class="hover:text-white transition-colors">تواصل معنا</Link></li>
+            <li><Link href="/" class="text-white/80 hover:text-white transition-colors">الرئيسية</Link></li>
+            <li><Link href="#features" class="text-white/80 hover:text-white transition-colors">المميزات</Link></li>
+            <li><Link href="#services" class="text-white/80 hover:text-white transition-colors">خدماتنا</Link></li>
+            <li><Link href="#faq" class="text-white/80 hover:text-white transition-colors">الأسئلة الشائعة</Link></li>
+            <li><Link href="#contact" class="text-white/80 hover:text-white transition-colors">تواصل معنا</Link></li>
           </ul>
         </div>
 
@@ -73,9 +72,9 @@ const currentYear = new Date().getFullYear();
         <div>
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">الخدمات</h4>
           <ul class="space-y-3 text-sm">
-            <li><Link href="#" class="hover:text-white transition-colors">للعملاء</Link></li>
-            <li><Link href="#" class="hover:text-white transition-colors">للمستشارين</Link></li>
-            <li><Link href="#" class="hover:text-white transition-colors">الأسعار</Link></li>
+            <li><Link href="#" class="text-white/80 hover:text-white transition-colors">للعملاء</Link></li>
+            <li><Link href="#" class="text-white/80 hover:text-white transition-colors">للمستشارين</Link></li>
+            <li><Link href="#" class="text-white/80 hover:text-white transition-colors">الأسعار</Link></li>
           </ul>
         </div>
 
@@ -83,10 +82,10 @@ const currentYear = new Date().getFullYear();
         <div>
           <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">وسائل التواصل</h4>
           <div class="flex items-center gap-3">
-            <a href="#" class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white hover:text-brand-dark transition-colors" aria-label="LinkedIn">
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/90 hover:bg-white hover:text-brand-500 transition-colors" aria-label="LinkedIn">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             </a>
-            <a href="#" class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white hover:text-brand-dark transition-colors" aria-label="Twitter">
+            <a href="#" class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white/90 hover:bg-white hover:text-brand-500 transition-colors" aria-label="Twitter">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
@@ -101,3 +100,13 @@ const currentYear = new Date().getFullYear();
     </div>
   </footer>
 </template>
+
+<style scoped>
+.footer-cta-primary {
+  background-color: var(--color-white);
+  color: var(--color-brand-500);
+}
+.footer-cta-primary:hover {
+  background-color: #f3f4f6;
+}
+</style>

@@ -24,7 +24,7 @@ const steps = props.section.items || defaultSteps;
 </script>
 
 <template>
-  <section id="how-it-works" class="relative py-20 lg:py-28 bg-brand-950" dir="rtl" style="background-color: #0E0E0E;">
+  <section id="how-it-works" class="relative py-20 lg:py-28 bg-brand-950" dir="rtl">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2">
@@ -33,14 +33,15 @@ const steps = props.section.items || defaultSteps;
         <p class="text-xl font-medium text-white/90 mb-1">
           {{ section.title || 'ثلاث خطوات بسيطة' }}
         </p>
-        <p class="text-white/75">
+        <p class="text-white/80">
           {{ section.subtitle || 'للحصول على الاستشارة التي تحتاجها' }}
         </p>
       </div>
 
       <div class="relative">
         <div
-          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-40 hidden lg:block bg-white/40"
+          class="absolute top-5 right-0 left-0 h-0.5 rounded-full opacity-50 hidden lg:block bg-white/30"
+          aria-hidden="true"
         />
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-6">
@@ -50,17 +51,16 @@ const steps = props.section.items || defaultSteps;
             class="relative flex flex-col items-center text-center"
           >
             <div
-              class="relative z-10 shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-4 border-brand-500 shadow mb-6 bg-white"
-              style="color: #12392A; border-color: #12392A;"
+              class="step-number relative z-10 shrink-0 w-11 h-11 rounded-full flex items-center justify-center font-bold text-sm shadow-lg mb-6"
             >
               {{ index + 1 }}
             </div>
 
-            <div class="w-full rounded-xl border border-white/20 bg-white/5 p-6 hover:bg-white/10 hover:border-white/30 transition-all">
+            <div class="w-full rounded-2xl border border-white/15 bg-white/[0.06] p-6 hover:bg-white/[0.1] hover:border-white/25 transition-all">
               <h3 class="text-lg font-bold text-white mb-2">
                 {{ step.title }}
               </h3>
-              <p class="text-white/75 leading-relaxed text-sm">
+              <p class="text-white/80 leading-relaxed text-sm">
                 {{ step.description }}
               </p>
             </div>
@@ -70,3 +70,11 @@ const steps = props.section.items || defaultSteps;
     </div>
   </section>
 </template>
+
+<style scoped>
+.step-number {
+  background-color: var(--color-white);
+  color: var(--color-brand-500);
+  border: 3px solid var(--color-brand-forest);
+}
+</style>
