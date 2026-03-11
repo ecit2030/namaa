@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 interface FeatureItem {
   title: string;
@@ -47,10 +50,10 @@ const getFeatureIconPath = (iconName: string) => {
       <div class="text-center mb-14">
         <img src="/images/logo/logo.png" alt="كسب" class="h-10 mx-auto mb-6 object-contain" />
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          انضم كمستشار
+          {{ t('landing.mobileApp.title') }}
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-          {{ section?.title || 'وسّع قاعدة عملائك وزد دخلك من خلال تقديم خدماتك عبر منصتنا' }}
+          {{ section?.title || t('landing.mobileApp.subtitle') }}
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">

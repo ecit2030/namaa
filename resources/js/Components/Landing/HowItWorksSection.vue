@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 interface Props {
   section: {
     title?: string;
@@ -24,17 +28,17 @@ const steps = props.section.items || defaultSteps;
 </script>
 
 <template>
-  <section id="how-it-works" class="relative py-20 lg:py-28 bg-white" dir="rtl">
+  <section id="how-it-works" class="relative py-20 lg:py-28 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-2">
-          كيف يعمل
+          {{ t('landing.howItWorks.sectionTitle') }}
         </h2>
         <p class="text-xl font-medium text-gray-600 mb-1">
-          {{ section.title || 'ثلاث خطوات بسيطة' }}
+          {{ section.title || t('landing.howItWorks.title') }}
         </p>
         <p class="text-brand-muted">
-          {{ section.subtitle || 'للحصول على الاستشارة التي تحتاجها' }}
+          {{ section.subtitle || t('landing.howItWorks.subtitle') }}
         </p>
       </div>
 

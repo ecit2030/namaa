@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 interface Props {
   section: {
     title?: string;
@@ -43,13 +47,13 @@ const getIconPath = (iconName: string) => {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          {{ section.title || 'لماذا تختار منصتنا؟' }}
+          {{ section.title || t('landing.features.title') }}
         </h2>
         <p class="text-lg text-gray-600 mb-2">
-          {{ section.subtitle || 'كل ما تحتاجه لاستشارات مالية ومحاسبية احترافية بسهولة وأمان' }}
+          {{ section.subtitle || t('landing.features.subtitle') }}
         </p>
         <p class="text-brand-muted font-medium">
-          يثق بنا آلاف رواد الأعمال وأصحاب المشاريع
+          {{ t('landing.features.tagline') }}
         </p>
       </div>
 

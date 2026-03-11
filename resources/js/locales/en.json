@@ -319,8 +319,9 @@
     },
     "hero": {
         "badge": "Financial & accounting consulting",
-        "title": "Make decisions with confidence alongside finance experts",
+        "title": "Decisions with confidence — finance & business experts",
         "subtitle": "From financial statements to feasibility studies and growth plans — everything you need in one place.",
+        "imageAlt": "Financial consultation",
         "tagline": "Certified advisors • Live sessions • Professional reports",
         "ctaBook": "Book a consultation",
         "ctaExplore": "Explore our services",
@@ -346,6 +347,34 @@
         "copyright": "All rights reserved.",
         "platformDescription": "A platform connecting entrepreneurs and project owners with certified financial and accounting consultants for specialized consultations and services.",
         "address": "Riyadh, Kingdom of Saudi Arabia"
+    },
+    "features": {
+        "title": "Why choose our platform?",
+        "subtitle": "Everything you need for professional financial and accounting consulting, easily and securely.",
+        "tagline": "Trusted by thousands of entrepreneurs and project owners"
+    },
+    "howItWorks": {
+        "sectionTitle": "How it works",
+        "title": "Three simple steps",
+        "subtitle": "To get the consultation you need"
+    },
+    "services": {
+        "sectionTitle": "Our services",
+        "title": "Services that refine your project",
+        "subtitle": "A range of financial and accounting services designed to support your business growth."
+    },
+    "faq": {
+        "sectionTitle": "FAQ",
+        "subtitle": "Frequently asked questions"
+    },
+    "testimonials": {
+        "sectionTitle": "What our clients say",
+        "subtitle": "Real feedback from our clients",
+        "tagline": "Entrepreneurs and project owners who achieved their goals through our consultations"
+    },
+    "mobileApp": {
+        "title": "Join as advisor",
+        "subtitle": "Grow your client base and income by offering your services on our platform"
     }
 },
 "auth": {

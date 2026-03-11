@@ -27,7 +27,7 @@ class LandingPageSeeder extends Seeder
         $heroSection = LandingSection::create([
             'landing_page_id' => $landingPage->id,
             'type' => 'hero',
-            'title' => 'خُذ قراراتك بثقة مع خبراء مال وأعمال',
+            'title' => 'قراراتك بثقة — خبراء مال وأعمال',
             'subtitle' => 'من تحليل القوائم المالية إلى دراسة الجدوى وخطط النمو، كل ما تحتاجه متاح في مكان واحد.',
             'order' => 0,
             'is_active' => true,

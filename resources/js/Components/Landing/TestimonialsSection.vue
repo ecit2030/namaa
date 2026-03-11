@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 interface Testimonial {
   name?: string;
@@ -67,13 +70,13 @@ onUnmounted(() => {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          آراء العملاء
+          {{ t('landing.testimonials.sectionTitle') }}
         </h2>
         <p class="text-lg text-gray-600">
-          {{ section?.title || 'انطباعات حقيقية من عملائنا' }}
+          {{ section?.title || t('landing.testimonials.subtitle') }}
         </p>
         <p class="text-brand-muted mt-1">
-          {{ section?.subtitle || 'رواد أعمال وأصحاب مشاريع حققوا أهدافهم من خلال استشاراتنا' }}
+          {{ section?.subtitle || t('landing.testimonials.tagline') }}
         </p>
       </div>
 

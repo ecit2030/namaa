@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 interface ServiceItem {
   title: string;
@@ -53,13 +56,13 @@ const getServiceIconPath = (iconName: string) => {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          خدماتنا
+          {{ t('landing.services.sectionTitle') }}
         </h2>
         <h3 class="text-xl text-gray-600 font-medium mb-2">
-          {{ section.title || 'خدمات متكاملة تُنقي مشروعك' }}
+          {{ section.title || t('landing.services.title') }}
         </h3>
         <p class="text-brand-muted">
-          {{ section.subtitle || 'مجموعة متنوعة من الخدمات المالية والمحاسبية المصممة لدعم نمو أعمالك' }}
+          {{ section.subtitle || t('landing.services.subtitle') }}
         </p>
       </div>
 

@@ -31,13 +31,13 @@ const { t } = useI18n();
               <img
                 v-if="section.image"
                 :src="`/storage/${section.image}`"
-                alt="استشارة مالية"
+                :alt="t('landing.hero.imageAlt')"
                 class="w-full h-auto object-cover"
               />
               <img
                 v-else
                 src="/images/landing/hero-financial.png"
-                alt="استشارة مالية ومحاسبية"
+                :alt="t('landing.hero.imageAlt')"
                 class="w-full h-auto object-cover"
               />
             </div>

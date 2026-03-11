@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 interface Props {
   section?: {
@@ -39,10 +42,10 @@ const toggle = (index: number) => {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-2">
-          الأسئلة الشائعة
+          {{ t('landing.faq.sectionTitle') }}
         </h2>
         <p class="text-brand-muted">
-          {{ section?.title || 'استفسارات متكررة' }}
+          {{ section?.title || t('landing.faq.subtitle') }}
         </p>
       </div>
 
