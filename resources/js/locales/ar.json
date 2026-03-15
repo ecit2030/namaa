@@ -881,6 +881,9 @@
     }
 },
 "auth": {
+    "register": {
+        "backToDashboard": "العودة إلى لوحة التحكم"
+    },
     "login": {
         "backToDashboard": "العودة إلى لوحة التحكم",
         "switchToEnglish": "التبديل إلى الإنجليزية",

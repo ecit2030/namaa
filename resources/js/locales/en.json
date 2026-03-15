@@ -421,6 +421,9 @@
     }
 },
 "auth": {
+    "register": {
+        "backToDashboard": "Back to dashboard"
+    },
     "login": {
         "backToDashboard": "Back to dashboard",
         "switchToEnglish": "Switch to English",

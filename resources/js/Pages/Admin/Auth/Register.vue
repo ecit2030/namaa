@@ -2,7 +2,10 @@
     <FullScreenLayout>
         <Head title="Admin Sign Up" />
 
-        <div class="relative z-10 bg-white p-6 dark:bg-gray-900 sm:p-0">
+        <div
+            class="relative z-10 bg-white p-6 dark:bg-gray-900 sm:p-0"
+            :dir="currentLocale === 'ar' ? 'rtl' : 'ltr'"
+        >
             <div class="relative flex h-screen w-full flex-col justify-center dark:bg-gray-900 lg:flex-row">
                 <div class="flex w-full flex-1 flex-col lg:w-1/2">
                     <div class="mx-auto w-full max-w-md pt-10">
@@ -11,7 +14,8 @@
                             class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                         >
                             <svg
-                                class="mr-2 stroke-current"
+                                class="me-2 shrink-0 stroke-current transition-transform"
+                                :class="currentLocale === 'ar' ? 'rotate-180' : ''"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="20"
                                 height="20"
@@ -26,7 +30,7 @@
                                     stroke-linejoin="round"
                                 />
                             </svg>
-                            Back to dashboard
+                            {{ t('auth.register.backToDashboard') }}
                         </Link>
                     </div>
 
@@ -367,12 +371,12 @@
                 </div>
 
                 <div
-                    class="relative hidden w-full h-full items-center justify-center overflow-hidden bg-brand-950 dark:bg-white/5 lg:flex lg:w-1/2"
+                    class="relative hidden w-full h-full items-center justify-center overflow-hidden bg-brand-950 dark:bg-white/5 lg:flex lg:w-1/2 p-8"
                 >
                     <img
                         src="/images/auth/login-hero.png"
                         alt="كسب للإستشارات المالية"
-                        class="w-full h-full object-cover object-center"
+                        class="max-w-full max-h-[70vh] w-auto h-auto object-contain object-center"
                     />
                 </div>
             </div>
@@ -383,7 +387,11 @@
 <script setup>
 import FullScreenLayout from '@/Components/layout/FullScreenLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
+const currentLocale = computed(() => (locale.value ?? 'en'));
 
 const form = useForm({
     name: '',
