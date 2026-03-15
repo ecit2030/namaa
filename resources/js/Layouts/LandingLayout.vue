@@ -60,7 +60,7 @@ const navLinks = [
               {{ currentLocale === 'ar' ? 'EN' : 'ع' }}
             </button>
             <Link href="/" class="flex items-center gap-2 shrink-0">
-              <img src="/images/logo/logo-euro.png" alt="كسب" class="h-8 lg:h-9 w-auto header-logo" />
+              <img src="/images/logo/logo-main.png" alt="كسب" class="h-8 lg:h-9 w-auto header-logo object-contain" />
             </Link>
           </div>
 

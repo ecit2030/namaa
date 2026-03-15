@@ -40,7 +40,7 @@ const currentYear = new Date().getFullYear();
         <!-- Brand -->
         <div class="lg:col-span-1 space-y-4">
           <Link href="/" class="inline-flex items-center gap-2">
-            <img src="/images/logo/logo-euro.png" alt="كسب" class="h-10 w-auto footer-logo" />
+            <img src="/images/logo/logo-main.png" alt="كسب" class="h-10 w-auto footer-logo object-contain" />
           </Link>
           <p class="text-white/80 leading-relaxed text-sm">
             {{ t('landing.footer.platformDescription') }}
