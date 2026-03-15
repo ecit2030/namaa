@@ -886,6 +886,7 @@
     },
     "login": {
         "backToDashboard": "العودة إلى لوحة التحكم",
+        "backToHome": "العودة للرئيسية",
         "switchToEnglish": "التبديل إلى الإنجليزية",
         "switchToArabic": "التبديل إلى العربية",
         "title": "تسجيل الدخول",
