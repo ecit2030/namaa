@@ -76,7 +76,7 @@ const { t, locale } = useI18n();
           </div>
           <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-gray-600 text-sm">
             <span class="flex items-center gap-2">
-              <span class="font-bold text-brand-500">+50</span>
+              <span class="font-bold text-brand-500">50+</span>
               {{ t('landing.hero.advisorsCount') }}
             </span>
             <span class="flex items-center gap-1.5">
