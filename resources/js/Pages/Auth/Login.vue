@@ -221,7 +221,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { Link, useForm, router } from '@inertiajs/vue3'
 import { route } from '@/route'
 import FullScreenLayout from '@/Components/layout/FullScreenLayout.vue'
@@ -241,6 +241,20 @@ const form = useForm({
 const { t, locale } = useI18n();
 
 const currentLocale = computed(() => (locale.value as string) || 'en')
+
+// Default Sign In page to English so all labels (including back button) show in English
+onMounted(() => {
+  if ((locale.value as string) !== 'en') {
+    locale.value = 'en'
+    i18n.global.locale.value = 'en'
+    setHtmlLang('en')
+    applyDirection('ltr')
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('locale', 'en')
+      localStorage.setItem('direction', 'ltr')
+    }
+  }
+})
 
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value
