@@ -137,37 +137,37 @@ class LandingPageSeeder extends Seeder
                 'title' => 'دراسة جدوى',
                 'description' => 'دراسة حجم السوق، أنواع العملاء، سلوكهم، والمنافسين لاكتشاف فرص النمو والتهديدات.',
                 'background_color' => 'bg-gradient-to-br from-[#E0F2FE] to-[#BAE6FD]',
-                'icon' => '💡',
+                'icon' => 'lightbulb',
             ],
             [
                 'title' => 'تحليل سوق',
                 'description' => 'دراسة حجم السوق، أنواع المصاف، سلوكهم، والمنافسين لاكتشاف فرص النمو والتهديدات.',
                 'background_color' => 'bg-gradient-to-br from-[#FCE7F3] to-[#FBCFE8]',
-                'icon' => '🔍',
+                'icon' => 'search',
             ],
             [
                 'title' => 'تحليل مالي',
                 'description' => 'تقدير التكاليف والإيرادات والأرباح المتوقعة للمشروع، وحساب مؤشرات مثل نقطة التعادل والعائد على الاستثمار.',
                 'background_color' => 'bg-gradient-to-br from-[#FFE4E6] to-[#FECDD3]',
-                'icon' => '📊',
+                'icon' => 'chart',
             ],
             [
                 'title' => 'خطة عمل',
                 'description' => 'وثيقة تو توضيح أهداف المشروع، وخطوات التشغيل، والموارد المطلوبة، والخطة المالية والتسويقية لفترة زمنية محددة.',
                 'background_color' => 'bg-gradient-to-br from-[#DBEAFE] to-[#BFDBFE]',
-                'icon' => '📋',
+                'icon' => 'document',
             ],
             [
                 'title' => 'إدارة استثمار',
                 'description' => 'مراقبة وتنظيم قرارات الاستثمار من اختيار الفرص وتوزيع رأس المال حتى مراقبة الأداء وتقليل المخاطر.',
                 'background_color' => 'bg-gradient-to-br from-[#F3E8FF] to-[#E9D5FF]',
-                'icon' => '💼',
+                'icon' => 'briefcase',
             ],
             [
                 'title' => 'تقييم أعمال',
                 'description' => 'فحص أداء ونمو ومردودية الشركة لتحديد قيمتها السوقية أو جاجزتها للاستثمار أو البيع.',
                 'background_color' => 'bg-gradient-to-br from-[#FEF3C7] to-[#FDE68A]',
-                'icon' => '✅',
+                'icon' => 'chart-bar',
             ],
         ];
 

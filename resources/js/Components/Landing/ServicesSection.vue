@@ -27,8 +27,9 @@ const props = defineProps<Props>();
 const defaultIcons = ['lightbulb', 'search', 'chart', 'document', 'briefcase', 'chart-bar'];
 
 const services = computed(() => {
+  const iconList = defaultIcons;
   if (locale.value === 'en') {
-    return defaultIcons.map((icon, i) => ({
+    return iconList.map((icon, i) => ({
       title: t(`landing.services.items.${i}.title`),
       description: t(`landing.services.items.${i}.description`),
       icon,
@@ -36,8 +37,15 @@ const services = computed(() => {
       link_text: t('landing.services.more'),
     }));
   }
-  if (props.section.items?.length) return props.section.items;
-  return defaultIcons.map((icon, i) => ({
+  if (props.section.items?.length) {
+    return props.section.items.map((item, i) => ({
+      ...item,
+      icon: iconList[i] ?? 'document',
+      link: item.link ?? '#',
+      link_text: item.link_text ?? t('landing.services.more'),
+    }));
+  }
+  return iconList.map((icon, i) => ({
     title: t(`landing.services.items.${i}.title`),
     description: t(`landing.services.items.${i}.description`),
     icon,
@@ -86,7 +94,7 @@ const getServiceIconPath = (iconName: string) => {
         >
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-forest/15 text-brand-500 mb-4">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path :d="getServiceIconPath(typeof service.icon === 'string' && ['chart','search','lightbulb','check','briefcase','document','scale','chart-bar'].includes(service.icon) ? service.icon : 'document')" />
+              <path :d="getServiceIconPath(service.icon)" />
             </svg>
           </div>
           <h3 class="text-lg font-bold text-brand-dark mb-3">
