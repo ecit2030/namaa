@@ -77,7 +77,7 @@ const toggle = (index: number) => {
             </span>
             <svg
               class="w-5 h-5 text-brand-500 shrink-0 transition-transform duration-300 mt-0.5 faq-chevron"
-              :class="[openIndex === index ? 'rotate-180' : '', locale === 'ar' ? 'rtl-mirror' : '']"
+              :class="openIndex === index ? 'rotate-180' : ''"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -110,13 +110,7 @@ const toggle = (index: number) => {
 .faq-bar-open {
   background-color: var(--color-brand-forest);
 }
-.faq-chevron.rtl-mirror {
-  transform: scaleX(-1);
-}
 .faq-chevron.rotate-180 {
   transform: rotate(180deg);
-}
-.faq-chevron.rtl-mirror.rotate-180 {
-  transform: scaleX(-1) rotate(180deg);
 }
 </style>
