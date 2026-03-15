@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n';
 
 const { t, locale } = useI18n();
 const currentYear = new Date().getFullYear();
-const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=4');
+const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=5');
 </script>
 
 <template>
