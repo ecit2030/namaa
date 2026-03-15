@@ -52,7 +52,7 @@ const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-
               <span class="text-white/90">info@consultant-platform.com</span>
             </a>
             <a href="tel:+966501234567" class="flex items-center gap-2 hover:text-white transition-colors">
-              <span class="text-white/90">+966 50 123 4567</span>
+              <span class="text-white/90" dir="ltr">+966 50 123 4567</span>
             </a>
             <span class="flex items-start gap-2 text-white/70">
               {{ t('landing.footer.address') }}
