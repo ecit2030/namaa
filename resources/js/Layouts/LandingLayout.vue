@@ -53,7 +53,7 @@ const navLinks = [
           <div class="flex items-center shrink-0">
             <Link href="/" class="flex items-center gap-2">
               <img
-                :src="(currentLocale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=3'"
+                :src="(currentLocale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=4'"
                 alt="كسب"
                 class="h-7 lg:h-8 w-auto header-logo object-contain"
               />
