@@ -10,8 +10,11 @@ function getInitialLocale(): string {
     return window.page.props.locale;
   }
   
-  // Fallback to localStorage direction mapping
-  return getSavedDirection() === 'rtl' ? 'ar' : 'en';
+  // Default to Arabic; use saved direction only if already set
+  const saved = getSavedDirection();
+  if (saved === 'rtl') return 'ar';
+  if (saved === 'ltr') return 'en';
+  return 'ar';
 }
 
 const initialLocale = getInitialLocale();
@@ -19,7 +22,7 @@ const initialLocale = getInitialLocale();
 export const i18n = createI18n({
   legacy: false,
   locale: initialLocale,
-  fallbackLocale: 'en',
+  fallbackLocale: 'ar',
   messages: { en, ar },
 });
 

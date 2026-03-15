@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface Props {
   section: {
@@ -21,6 +21,13 @@ const props = defineProps<Props>();
 const defaultIcons = ['search', 'video', 'document', 'folder', 'shield', 'star'];
 
 const features = computed(() => {
+  if (locale.value === 'en') {
+    return defaultIcons.map((icon, i) => ({
+      title: t(`landing.features.items.${i}.title`),
+      description: t(`landing.features.items.${i}.description`),
+      icon,
+    }));
+  }
   if (props.section.items?.length) return props.section.items;
   return defaultIcons.map((icon, i) => ({
     title: t(`landing.features.items.${i}.title`),
@@ -44,14 +51,14 @@ const getIconPath = (iconName: string) => {
 
 <template>
   <!-- Light section: features -->
-  <section id="features" class="relative py-20 lg:py-28 bg-white">
+  <section id="features" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          {{ section.title || t('landing.features.title') }}
+          {{ locale === 'en' ? t('landing.features.title') : (section.title || t('landing.features.title')) }}
         </h2>
         <p class="text-lg text-gray-600 mb-2">
-          {{ section.subtitle || t('landing.features.subtitle') }}
+          {{ locale === 'en' ? t('landing.features.subtitle') : (section.subtitle || t('landing.features.subtitle')) }}
         </p>
         <p class="text-brand-muted font-medium">
           {{ t('landing.features.tagline') }}

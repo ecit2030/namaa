@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface Props {
   section?: {
@@ -17,6 +17,13 @@ const props = defineProps<Props>();
 const openIndex = ref(0);
 
 const faqs = computed(() => {
+  if (locale.value === 'en') {
+    return [0, 1, 2, 3, 4, 5].map((i) => ({
+      question: t(`landing.faq.items.${i}.question`),
+      answer: t(`landing.faq.items.${i}.answer`),
+      isOpen: openIndex.value === i,
+    }));
+  }
   if (props.section?.items?.length) {
     return props.section.items.map((item, index) => ({
       question: item.title,
@@ -38,14 +45,14 @@ const toggle = (index: number) => {
 
 <template>
   <!-- Light FAQ section -->
-  <section id="faq" class="relative py-20 lg:py-28 bg-white overflow-hidden">
+  <section id="faq" class="relative py-8 lg:py-12 bg-white overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-2">
           {{ t('landing.faq.sectionTitle') }}
         </h2>
         <p class="text-brand-muted">
-          {{ section?.title || t('landing.faq.subtitle') }}
+          {{ locale === 'en' ? t('landing.faq.subtitle') : (section?.title || t('landing.faq.subtitle')) }}
         </p>
       </div>
 

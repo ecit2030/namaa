@@ -9,7 +9,7 @@ const currentYear = new Date().getFullYear();
 <template>
   <footer class="bg-brand-500 text-white">
     <div id="contact" class="border-b border-white/20">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="text-center max-w-2xl mx-auto mb-8">
           <h3 class="text-2xl font-bold text-white mb-3">
             {{ t('landing.footer.tagline') }}
@@ -35,7 +35,7 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <!-- Brand -->
         <div class="lg:col-span-1 space-y-4">
@@ -91,7 +91,7 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
 
-      <div class="mt-14 pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-center gap-4">
         <p class="text-sm text-white/70 text-center">
           © {{ currentYear }} كسب. {{ t('landing.footer.copyright') }}
         </p>

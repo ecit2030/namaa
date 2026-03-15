@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface FeatureItem {
   title: string;
@@ -26,6 +26,14 @@ const props = defineProps<Props>();
 const defaultIcons = ['mobile', 'tag', 'chart-up'];
 
 const features = computed(() => {
+  if (locale.value === 'en') {
+    return defaultIcons.map((icon, i) => ({
+      title: t(`landing.mobileApp.features.${i}.title`),
+      description: t(`landing.mobileApp.features.${i}.description`),
+      icon,
+      background_color: 'from-brand-dark/5 to-white',
+    }));
+  }
   if (props.section?.items?.length) return props.section.items;
   return defaultIcons.map((icon, i) => ({
     title: t(`landing.mobileApp.features.${i}.title`),
@@ -49,7 +57,7 @@ const getFeatureIconPath = (iconName: string) => {
 </script>
 
 <template>
-  <section id="mobile-app" class="relative py-20 lg:py-28 bg-white">
+  <section id="mobile-app" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <img src="/images/logo/logo.png" alt="كسب" class="h-10 mx-auto mb-6 object-contain" />
@@ -57,7 +65,7 @@ const getFeatureIconPath = (iconName: string) => {
           {{ t('landing.mobileApp.title') }}
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-          {{ section?.title || t('landing.mobileApp.subtitle') }}
+          {{ locale === 'en' ? t('landing.mobileApp.subtitle') : (section?.title || t('landing.mobileApp.subtitle')) }}
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">

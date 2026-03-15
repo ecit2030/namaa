@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface Testimonial {
   name?: string;
@@ -29,6 +29,15 @@ const props = defineProps<Props>();
 const defaultAvatars = ['👨‍💼', '👩‍💼', '👨‍💻'];
 
 const testimonials = computed<Testimonial[]>(() => {
+  if (locale.value === 'en') {
+    return [0, 1, 2].map((i) => ({
+      title: t(`landing.testimonials.items.${i}.name`),
+      subtitle: t(`landing.testimonials.items.${i}.role`),
+      description: t(`landing.testimonials.items.${i}.description`),
+      rating: 5,
+      avatar: defaultAvatars[i],
+    }));
+  }
   if (props.section?.items?.length) return props.section.items;
   return [0, 1, 2].map((i) => ({
     title: t(`landing.testimonials.items.${i}.name`),
@@ -71,17 +80,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-20 lg:py-28 bg-white">
+  <section id="testimonials" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
           {{ t('landing.testimonials.sectionTitle') }}
         </h2>
         <p class="text-lg text-gray-600">
-          {{ section?.title || t('landing.testimonials.subtitle') }}
+          {{ locale === 'en' ? t('landing.testimonials.subtitle') : (section?.title || t('landing.testimonials.subtitle')) }}
         </p>
         <p class="text-brand-muted mt-1">
-          {{ section?.subtitle || t('landing.testimonials.tagline') }}
+          {{ locale === 'en' ? t('landing.testimonials.tagline') : (section?.subtitle || t('landing.testimonials.tagline')) }}
         </p>
       </div>
 

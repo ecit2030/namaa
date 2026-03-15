@@ -26,8 +26,8 @@ createInertiaApp({
   },
   setup({ el, App, props, plugin }) {
     // Sync locale and direction from backend
-    const backendLocale = props.initialPage.props.locale || 'en';
-    const backendDir = props.initialPage.props.dir || 'ltr';
+    const backendLocale = props.initialPage.props.locale || 'ar';
+    const backendDir = props.initialPage.props.dir || 'rtl';
     
     // Update i18n locale to match backend
     i18n.global.locale.value = backendLocale;

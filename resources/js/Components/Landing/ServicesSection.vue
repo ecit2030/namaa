@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface ServiceItem {
   title: string;
@@ -27,6 +27,15 @@ const props = defineProps<Props>();
 const defaultIcons = ['lightbulb', 'search', 'chart', 'document', 'briefcase', 'chart-bar'];
 
 const services = computed(() => {
+  if (locale.value === 'en') {
+    return defaultIcons.map((icon, i) => ({
+      title: t(`landing.services.items.${i}.title`),
+      description: t(`landing.services.items.${i}.description`),
+      icon,
+      link: '#',
+      link_text: t('landing.services.more'),
+    }));
+  }
   if (props.section.items?.length) return props.section.items;
   return defaultIcons.map((icon, i) => ({
     title: t(`landing.services.items.${i}.title`),
@@ -54,17 +63,17 @@ const getServiceIconPath = (iconName: string) => {
 
 <template>
   <!-- Light section: services -->
-  <section id="services" class="relative py-20 lg:py-28 bg-white">
+  <section id="services" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
           {{ t('landing.services.sectionTitle') }}
         </h2>
         <h3 class="text-xl text-gray-600 font-medium mb-2">
-          {{ section.title || t('landing.services.title') }}
+          {{ locale === 'en' ? t('landing.services.title') : (section.title || t('landing.services.title')) }}
         </h3>
         <p class="text-brand-muted">
-          {{ section.subtitle || t('landing.services.subtitle') }}
+          {{ locale === 'en' ? t('landing.services.subtitle') : (section.subtitle || t('landing.services.subtitle')) }}
         </p>
       </div>
 

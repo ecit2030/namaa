@@ -14,7 +14,7 @@ interface Props {
 }
 
 defineProps<Props>();
-const { t } = useI18n();
+const { t, locale } = useI18n();
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const { t } = useI18n();
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(47,107,74,0.04),transparent_50%)]" aria-hidden="true" />
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Image on the left (order-2 in RTL = visual left) -->
         <div class="order-1 lg:order-2 flex justify-center">
@@ -49,10 +49,10 @@ const { t } = useI18n();
             {{ t('landing.hero.badge') }}
           </p>
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.2] tracking-tight mb-6">
-            {{ section.title || t('landing.hero.title') }}
+            {{ locale === 'en' ? t('landing.hero.title') : (section.title || t('landing.hero.title')) }}
           </h1>
           <p class="text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed">
-            {{ section.subtitle || t('landing.hero.subtitle') }}
+            {{ locale === 'en' ? t('landing.hero.subtitle') : (section.subtitle || t('landing.hero.subtitle')) }}
           </p>
           <p class="text-brand-muted text-sm mb-10">
             {{ t('landing.hero.tagline') }}

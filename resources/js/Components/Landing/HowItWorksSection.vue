@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface Props {
   section: {
@@ -20,6 +20,13 @@ interface Props {
 const props = defineProps<Props>();
 
 const steps = computed(() => {
+  if (locale.value === 'en') {
+    return [0, 1, 2].map((i) => ({
+      title: t(`landing.howItWorks.steps.${i}.title`),
+      description: t(`landing.howItWorks.steps.${i}.description`),
+      icon: 'check',
+    }));
+  }
   if (props.section.items?.length) return props.section.items;
   return [0, 1, 2].map((i) => ({
     title: t(`landing.howItWorks.steps.${i}.title`),
@@ -30,17 +37,17 @@ const steps = computed(() => {
 </script>
 
 <template>
-  <section id="how-it-works" class="relative py-20 lg:py-28 bg-white">
+  <section id="how-it-works" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-2">
           {{ t('landing.howItWorks.sectionTitle') }}
         </h2>
         <p class="text-xl font-medium text-gray-600 mb-1">
-          {{ section.title || t('landing.howItWorks.title') }}
+          {{ locale === 'en' ? t('landing.howItWorks.title') : (section.title || t('landing.howItWorks.title')) }}
         </p>
         <p class="text-brand-muted">
-          {{ section.subtitle || t('landing.howItWorks.subtitle') }}
+          {{ locale === 'en' ? t('landing.howItWorks.subtitle') : (section.subtitle || t('landing.howItWorks.subtitle')) }}
         </p>
       </div>
 
