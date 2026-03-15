@@ -81,7 +81,7 @@ function submit() {
                   type="tel"
                   class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-brand-dark focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
                   :placeholder="t('bookConsultation.phonePlaceholder')"
-                  dir="ltr"
+                  :dir="locale === 'ar' ? 'rtl' : 'ltr'"
                 />
                 <p v-if="form.errors.phone" class="mt-1 text-sm text-red-500">{{ form.errors.phone }}</p>
               </div>
