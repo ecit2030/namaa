@@ -5,8 +5,8 @@
         class="relative flex flex-col justify-center w-full h-screen lg:flex-row dark:bg-gray-900"
       >
         <div class="flex flex-col flex-1 w-full lg:w-1/2">
-          <div class="w-full max-w-md pt-10 mx-auto">
-            <div class="flex items-center justify-between">
+          <div class="w-full max-w-md pt-6 pb-2 mx-auto">
+            <div class="flex items-center justify-end">
               <button
                 type="button"
                 @click="toggleLocale"

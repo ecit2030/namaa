@@ -19,14 +19,14 @@ const { t, locale } = useI18n();
 
 <template>
   <!-- Hero: LTR = text left, image right; RTL = text right, image left -->
-  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden bg-white py-4 lg:py-6">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(47,107,74,0.04),transparent_50%)]" aria-hidden="true" />
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-0">
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 lg:px-5 py-0">
+      <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
         <!-- Image: right in LTR, left in RTL -->
         <div class="order-2 lg:order-2 flex justify-center">
-          <div class="relative w-full max-w-md">
+          <div class="relative w-full max-w-sm lg:max-w-md">
             <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-xl ring-1 ring-gray-100">
               <img
                 v-if="section.image"
