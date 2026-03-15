@@ -212,8 +212,14 @@
           <img
             src="/images/auth/login-hero.png"
             :alt="t('auth.login.tagline')"
-            class="w-full h-full object-cover object-center"
+            class="absolute inset-0 w-full h-full object-cover object-center"
+            aria-hidden="true"
           />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-500/95 via-brand-500/80 to-transparent flex flex-col justify-end p-8 lg:p-12">
+            <p class="text-white text-2xl lg:text-3xl font-bold" :class="currentLocale === 'ar' ? 'text-right' : 'text-left'">
+              {{ t('auth.login.brandName') }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
