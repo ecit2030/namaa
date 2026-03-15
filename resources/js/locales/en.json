@@ -350,17 +350,15 @@
         "address": "Riyadh, Kingdom of Saudi Arabia"
     },
     "features": {
-        "title": "Why choose our platform?",
-        "subtitle": "Everything you need for professional financial and accounting consulting, easily and securely.",
-        "tagline": "Trusted by thousands of entrepreneurs and project owners",
+        "title": "Our Services",
+        "subtitle": "A custom plan to achieve your goals",
+        "tagline": "We offer training sessions and integrated programs for your health and fitness",
         "downloadApp": "Download the app now",
         "items": [
-            {"title": "Find the right consultant", "description": "Choose from certified consultants by specialty and your business needs"},
-            {"title": "Online consultation sessions", "description": "Video, audio, or text chat at your convenience"},
-            {"title": "Ready-made specialized services", "description": "Feasibility studies, financial analysis, business plans, debt restructuring"},
-            {"title": "Unified management", "description": "Your appointments, session records, and reports in one place"},
-            {"title": "Secure payment and clear refund policy", "description": "Secure transactions and transparent refund policy"},
-            {"title": "Rate and share your experience", "description": "Help other entrepreneurs choose the right consultant"}
+            {"title": "Personal Training", "description": "A custom plan to achieve your goals. We offer one-on-one sessions with certified trainers and a training program designed specifically for your goal—whether weight loss, muscle gain, or improving overall fitness."},
+            {"title": "Group Classes", "description": "Workouts with team spirit and energy. A variety of classes including HIIT, cardio, strength training, and Zumba in a motivating environment that helps you stay consistent and get the best results."},
+            {"title": "Weight Loss Programs", "description": "Healthy, sustainable results. A complete program that combines training and nutrition guidance to help you lose weight safely and effectively, with ongoing follow-up to track your progress."},
+            {"title": "Nutrition Consultations", "description": "A meal plan that fits your lifestyle. Custom nutrition plans supervised by specialists to support your fitness goals, improve your performance, and help you reach your desired results faster."}
         ]
     },
     "howItWorks": {
