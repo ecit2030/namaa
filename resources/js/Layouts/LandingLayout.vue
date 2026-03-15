@@ -167,8 +167,8 @@ const navLinks = [
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(18, 57, 42, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(47, 104, 79, 0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(13, 36, 23, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(47, 107, 74, 0.06) 0%, transparent 50%);
   animation: landing-bg-shift 18s ease-in-out infinite;
 }
 .landing-bg > * {

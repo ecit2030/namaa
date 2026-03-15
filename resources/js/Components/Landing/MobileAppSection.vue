@@ -120,6 +120,6 @@ const getFeatureIconPath = (iconName: string) => {
   color: var(--color-white);
 }
 .store-btn:hover {
-  background-color: #0f2f23;
+  background-color: var(--color-brand-600);
 }
 </style>

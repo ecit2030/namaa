@@ -20,7 +20,7 @@ const { t } = useI18n();
 <template>
   <!-- Light hero - image on left, text on right -->
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(18,57,42,0.03),transparent_50%)]" aria-hidden="true" />
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(47,107,74,0.04),transparent_50%)]" aria-hidden="true" />
 
     <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -99,6 +99,6 @@ const { t } = useI18n();
   color: var(--color-white);
 }
 .btn-primary:hover {
-  background-color: #0f2f23;
+  background-color: var(--color-brand-600);
 }
 </style>
