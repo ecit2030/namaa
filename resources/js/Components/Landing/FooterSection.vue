@@ -95,7 +95,7 @@ const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-
 
       <div class="mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-center gap-4">
         <p class="text-sm text-white/70 text-center">
-          © {{ currentYear }} كسب. {{ t('landing.footer.copyright') }}
+          © {{ currentYear }} {{ locale === 'en' ? 'csab' : 'كسب' }}. {{ t('landing.footer.copyright') }}
         </p>
       </div>
     </div>
