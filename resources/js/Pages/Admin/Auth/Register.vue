@@ -366,18 +366,14 @@
                     </div>
                 </div>
 
-                <div class="relative hidden h-full w-full items-center bg-brand-950 dark:bg-white/5 lg:grid lg:w-1/2">
-                    <div class="z-10 flex items-center justify-center">
-                        <CommonGridShape />
-                        <div class="flex max-w-xs flex-col items-center">
-                            <Link href="/" class="mb-4 block">
-                                <img width="231" height="48" src="/images/logo/logo.png" alt="Logo" />
-                            </Link>
-                            <p class="text-center text-gray-400 dark:text-white/60">
-                                Free and open-source Tailwind CSS admin dashboard template
-                            </p>
-                        </div>
-                    </div>
+                <div
+                    class="relative hidden w-full h-full items-center justify-center overflow-hidden bg-brand-950 dark:bg-white/5 lg:flex lg:w-1/2"
+                >
+                    <img
+                        src="/images/auth/login-hero.png"
+                        alt="كسب للإستشارات المالية"
+                        class="w-full h-full object-cover object-center"
+                    />
                 </div>
             </div>
         </div>
@@ -386,7 +382,6 @@
 
 <script setup>
 import FullScreenLayout from '@/Components/layout/FullScreenLayout.vue';
-import CommonGridShape from '@/Components/common/CommonGridShape.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import { ref, watch } from 'vue';
 
