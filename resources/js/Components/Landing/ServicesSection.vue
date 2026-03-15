@@ -65,7 +65,7 @@ const getServiceIconPath = (iconName: string) => {
   <!-- Light section: services -->
   <section id="services" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="text-center max-w-3xl mx-auto mb-10">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
           {{ t('landing.services.sectionTitle') }}
         </h2>
@@ -97,7 +97,7 @@ const getServiceIconPath = (iconName: string) => {
           </p>
           <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-accent group-hover:gap-2 transition-all">
             {{ service.link_text ?? t('landing.services.more') }}
-            <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" :class="locale === 'ar' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </span>

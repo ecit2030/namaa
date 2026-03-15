@@ -53,7 +53,7 @@ const getIconPath = (iconName: string) => {
   <!-- Light section: features -->
   <section id="features" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="text-center max-w-3xl mx-auto mb-10">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
           {{ locale === 'en' ? t('landing.features.title') : (section.title || t('landing.features.title')) }}
         </h2>

@@ -65,7 +65,7 @@ const toggle = (index: number) => {
         >
           <button
             type="button"
-            class="w-full text-right flex items-start gap-4 px-6 py-5 transition-colors focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500/30"
+            class="w-full text-start flex items-start gap-4 px-6 py-5 transition-colors focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-500/30"
             @click="toggle(index)"
           >
             <span
@@ -95,7 +95,7 @@ const toggle = (index: number) => {
             leave-to-class="opacity-0 max-h-0"
           >
             <div v-show="openIndex === index" class="overflow-hidden">
-              <div class="px-6 pb-5 pr-14 text-gray-600 leading-relaxed text-sm border-t border-gray-100 pt-4">
+              <div class="px-6 pb-5 ps-14 text-gray-600 leading-relaxed text-sm border-t border-gray-100 pt-4">
                 {{ faq.answer }}
               </div>
             </div>

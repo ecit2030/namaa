@@ -48,7 +48,7 @@ const navLinks = [
       class="fixed z-50 left-0 right-0 top-0 transition-all duration-300 bg-brand-500 backdrop-blur-md border-b border-white/10 shadow-md"
       :class="isScrolled ? 'shadow-lg' : ''"
     >
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div class="flex items-center justify-between h-16 lg:h-18">
           <div class="flex items-center gap-3">
             <button

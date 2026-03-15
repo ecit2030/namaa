@@ -18,14 +18,14 @@ const { t, locale } = useI18n();
 </script>
 
 <template>
-  <!-- Light hero - image on left, text on right -->
+  <!-- Hero: LTR = text left, image right; RTL = text right, image left -->
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(47,107,74,0.04),transparent_50%)]" aria-hidden="true" />
 
     <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Image on the left (order-2 in RTL = visual left) -->
-        <div class="order-1 lg:order-2 flex justify-center">
+        <!-- Image: right in LTR, left in RTL -->
+        <div class="order-2 lg:order-2 flex justify-center">
           <div class="relative w-full max-w-md">
             <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-xl ring-1 ring-gray-100">
               <img
@@ -43,8 +43,8 @@ const { t, locale } = useI18n();
             </div>
           </div>
         </div>
-        <!-- Text on the right -->
-        <div class="order-2 lg:order-1 text-center lg:text-right">
+        <!-- Text: left in LTR, right in RTL -->
+        <div class="order-1 lg:order-1 text-center lg:text-start">
           <p class="text-brand-forest text-sm font-semibold uppercase tracking-wider mb-4">
             {{ t('landing.hero.badge') }}
           </p>
@@ -63,7 +63,7 @@ const { t, locale } = useI18n();
               class="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
             >
               {{ t('landing.hero.ctaBook') }}
-              <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" :class="locale === 'ar' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </Link>
@@ -74,7 +74,7 @@ const { t, locale } = useI18n();
               {{ t('landing.hero.ctaExplore') }}
             </Link>
           </div>
-          <div class="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-gray-600 text-sm">
+          <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-gray-600 text-sm">
             <span class="flex items-center gap-2">
               <span class="font-bold text-brand-500">+50</span>
               {{ t('landing.hero.advisorsCount') }}

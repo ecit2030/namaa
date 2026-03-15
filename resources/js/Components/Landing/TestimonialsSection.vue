@@ -95,12 +95,12 @@ onUnmounted(() => {
       </div>
 
       <div class="relative">
-        <div class="absolute top-0 right-4 text-[100px] text-brand-pale/40 font-serif leading-none select-none" aria-hidden="true">
+        <div class="absolute top-0 end-4 text-[100px] text-brand-pale/40 font-serif leading-none select-none" aria-hidden="true">
           "
         </div>
 
         <div class="relative rounded-2xl border border-gray-200 bg-white p-8 sm:p-10 ring-1 ring-gray-100">
-          <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
             <div class="shrink-0">
               <div
                 v-if="testimonials[currentIndex].image"
@@ -120,8 +120,8 @@ onUnmounted(() => {
               </div>
             </div>
 
-            <div class="flex-1 text-right">
-              <div class="flex justify-end gap-0.5 mb-3">
+            <div class="flex-1 text-start">
+              <div class="flex justify-start gap-0.5 mb-3">
                 <svg
                   v-for="i in 5"
                   :key="i"
