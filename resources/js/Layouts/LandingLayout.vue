@@ -152,7 +152,7 @@ const navLinks = [
       </Transition>
     </header>
 
-    <main class="pt-12 lg:pt-14">
+    <main class="pt-10 lg:pt-12">
       <slot />
     </main>
   </div>
