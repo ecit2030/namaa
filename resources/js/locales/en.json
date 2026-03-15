@@ -446,8 +446,20 @@
         "tagline": "Financial and business consulting",
         "brandName": "csab"
     }
-}
-,"consultants": {
+},
+    "contact": {
+        "pageTitle": "Contact us",
+        "title": "Contact us",
+        "subtitle": "We're here to help. Reach out via email or phone.",
+        "backToHome": "Back to home"
+    },
+    "comingSoon": {
+        "pageTitle": "Coming soon",
+        "title": "Coming soon",
+        "subtitle": "The app is under development. We'll announce it soon.",
+        "backToHome": "Back to home"
+    },
+"consultants": {
     "consultantInformation": "Consultant information",
     "workingHours": "Working hours",
     "updateInfoHint": "Update consultant details from this tab.",

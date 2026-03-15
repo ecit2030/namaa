@@ -21,7 +21,7 @@ const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/register"
+              href="/contact"
               class="footer-cta-primary inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-xl transition-all hover:shadow-lg"
             >
               {{ t('landing.footer.learnMore') }}

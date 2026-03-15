@@ -79,7 +79,7 @@ const navLinks = [
               {{ t('landing.nav.joinAsAdvisor') }}
             </Link>
             <Link
-              href="/register"
+              href="/coming-soon"
               class="px-4 py-2 text-sm font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
               {{ t('landing.nav.downloadApp') }}
@@ -136,7 +136,7 @@ const navLinks = [
               <Link href="/login" class="text-center px-4 py-2.5 font-semibold text-white border border-white/50 rounded-lg hover:bg-white/10 transition-colors" @click="isMenuOpen = false">
                 {{ t('landing.nav.joinAsAdvisor') }}
               </Link>
-              <Link href="/register" class="text-center px-4 py-2.5 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
+              <Link href="/coming-soon" class="text-center px-4 py-2.5 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
                 {{ t('landing.nav.downloadApp') }}
               </Link>
               <button
