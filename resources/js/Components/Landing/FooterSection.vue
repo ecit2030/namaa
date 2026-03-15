@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const currentYear = new Date().getFullYear();
+const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png'));
 </script>
 
 <template>
@@ -40,7 +42,7 @@ const currentYear = new Date().getFullYear();
         <!-- Brand -->
         <div class="lg:col-span-1 space-y-4">
           <Link href="/" class="inline-flex items-center gap-2">
-            <img src="/images/logo/logo-main.png" alt="كسب" class="h-10 w-auto footer-logo object-contain" />
+            <img :src="logoSrc" alt="كسب" class="h-10 w-auto footer-logo object-contain" />
           </Link>
           <p class="text-white/80 leading-relaxed text-sm">
             {{ t('landing.footer.platformDescription') }}
