@@ -114,9 +114,13 @@ onUnmounted(() => {
               </div>
               <div
                 v-else
-                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest/20 text-brand-500"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex items-center justify-center shadow-md bg-brand-forest/10 border border-brand-200/50"
               >
-                {{ testimonials[currentIndex].avatar || '👤' }}
+                <img
+                  src="/images/placeholders/avatar.svg"
+                  :alt="testimonials[currentIndex].name || testimonials[currentIndex].title || ''"
+                  class="w-full h-full object-contain p-2"
+                />
               </div>
             </div>
 

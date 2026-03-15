@@ -84,7 +84,10 @@ const getServiceIconPath = (iconName: string) => {
           :href="service.link || '#'"
           class="group block rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:bg-brand-50 hover:border-brand-200 transition-all duration-300 min-h-[260px] flex flex-col focus-visible:outline focus-visible:ring-2 focus-visible:ring-brand-500/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         >
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-forest/15 text-brand-500 mb-4">
+          <div
+            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-forest/15 text-brand-500 mb-4"
+            :class="{ 'rtl-mirror': locale === 'ar' }"
+          >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path :d="getServiceIconPath(typeof service.icon === 'string' && ['chart','search','lightbulb','check','briefcase','document','scale','chart-bar'].includes(service.icon) ? service.icon : 'document')" />
             </svg>
@@ -106,3 +109,9 @@ const getServiceIconPath = (iconName: string) => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.rtl-mirror {
+  transform: scaleX(-1);
+}
+</style>

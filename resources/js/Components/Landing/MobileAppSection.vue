@@ -105,6 +105,7 @@ const getFeatureIconPath = (iconName: string) => {
           <div
             v-else
             class="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500"
+            :class="{ 'rtl-mirror': locale === 'ar' }"
           >
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" :d="getFeatureIconPath(feature.icon || 'mobile')" />
@@ -129,5 +130,8 @@ const getFeatureIconPath = (iconName: string) => {
 }
 .store-btn:hover {
   background-color: var(--color-brand-600);
+}
+.rtl-mirror {
+  transform: scaleX(-1);
 }
 </style>
