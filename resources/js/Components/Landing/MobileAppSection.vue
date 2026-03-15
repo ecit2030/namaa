@@ -26,16 +26,23 @@ const props = defineProps<Props>();
 const defaultIcons = ['mobile', 'tag', 'chart-up'];
 
 const features = computed(() => {
+  const iconList = defaultIcons;
   if (locale.value === 'en') {
-    return defaultIcons.map((icon, i) => ({
+    return iconList.map((icon, i) => ({
       title: t(`landing.mobileApp.features.${i}.title`),
       description: t(`landing.mobileApp.features.${i}.description`),
       icon,
       background_color: 'from-brand-dark/5 to-white',
     }));
   }
-  if (props.section?.items?.length) return props.section.items;
-  return defaultIcons.map((icon, i) => ({
+  if (props.section?.items?.length) {
+    return props.section.items.map((item, i) => ({
+      ...item,
+      icon: iconList[i] ?? 'mobile',
+      background_color: item.background_color ?? 'from-brand-dark/5 to-white',
+    }));
+  }
+  return iconList.map((icon, i) => ({
     title: t(`landing.mobileApp.features.${i}.title`),
     description: t(`landing.mobileApp.features.${i}.description`),
     icon,
@@ -94,28 +101,32 @@ const getFeatureIconPath = (iconName: string) => {
         <article
           v-for="(feature, index) in features"
           :key="index"
-          class="rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:border-brand-200 hover:shadow-md transition-all"
+          class="rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:border-brand-200 hover:shadow-md transition-all flex flex-col"
         >
-          <div
-            v-if="feature.image"
-            class="aspect-[3/4] max-w-[180px] mx-auto mb-5 rounded-xl overflow-hidden bg-brand-50"
-          >
-            <img :src="`/storage/${feature.image}`" :alt="feature.title" class="w-full h-full object-cover" />
+          <div class="flex flex-col rtl:flex-row rtl:items-start rtl:gap-4 rtl:text-right">
+            <div
+              v-if="feature.image"
+              class="aspect-[3/4] max-w-[180px] mx-auto mb-5 rounded-xl overflow-hidden bg-brand-50 rtl:order-1 rtl:mx-0 rtl:mb-0 rtl:shrink-0"
+            >
+              <img :src="`/storage/${feature.image}`" :alt="feature.title" class="w-full h-full object-cover" />
+            </div>
+            <div
+              v-else
+              class="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500 rtl:order-1 rtl:mx-0 rtl:mb-0 rtl:shrink-0"
+            >
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" :d="getFeatureIconPath(feature.icon || 'mobile')" />
+              </svg>
+            </div>
+            <div class="rtl:order-2 flex-1">
+              <h3 class="text-lg font-bold text-brand-dark mb-2 text-center rtl:text-right">
+                {{ feature.title }}
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm text-center rtl:text-right">
+                {{ feature.description }}
+              </p>
+            </div>
           </div>
-          <div
-            v-else
-            class="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500"
-          >
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" :d="getFeatureIconPath(feature.icon || 'mobile')" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold text-brand-dark mb-2 text-center">
-            {{ feature.title }}
-          </h3>
-          <p class="text-gray-600 leading-relaxed text-sm text-center">
-            {{ feature.description }}
-          </p>
         </article>
       </div>
     </div>
