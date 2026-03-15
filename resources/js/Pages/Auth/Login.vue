@@ -4,20 +4,16 @@
       <div
         class="relative flex flex-col justify-center w-full h-screen lg:flex-row dark:bg-gray-900"
       >
-        <div class="flex flex-col flex-1 w-full lg:w-1/2">
-          <div class="w-full max-w-md pt-6 pb-2 mx-auto">
-            <div class="flex items-center justify-end">
-              <button
-                type="button"
-                @click="toggleLocale"
-                class="inline-flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-700 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
-                :title="currentLocale === 'ar' ? t('auth.login.switchToEnglish') : t('auth.login.switchToArabic')"
-              >
-                <span>{{ currentLocale === 'ar' ? 'EN' : 'ع' }}</span>
-              </button>
-            </div>
-          </div>
-          <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+        <div class="flex flex-col flex-1 w-full lg:w-1/2 relative">
+          <button
+            type="button"
+            @click="toggleLocale"
+            class="fixed top-4 end-4 z-50 inline-flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-700 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10 shadow-sm"
+            :title="currentLocale === 'ar' ? t('auth.login.switchToEnglish') : t('auth.login.switchToArabic')"
+          >
+            <span>{{ currentLocale === 'ar' ? 'EN' : 'ع' }}</span>
+          </button>
+          <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto pt-14">
             <div>
               <div class="mb-5 sm:mb-8">
                 <h1

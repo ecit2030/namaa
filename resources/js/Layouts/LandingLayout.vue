@@ -48,12 +48,12 @@ const navLinks = [
       class="fixed z-50 left-0 right-0 top-0 transition-all duration-300 bg-brand-500 backdrop-blur-md border-b border-white/10 shadow-md"
       :class="isScrolled ? 'shadow-lg' : ''"
     >
-      <div class="max-w-6xl mx-auto px-3 sm:px-4 lg:px-5 w-full">
-        <div class="flex items-center justify-between h-14 lg:h-16">
+      <div class="max-w-6xl mx-auto px-2 sm:px-3 lg:px-4 w-full">
+        <div class="flex items-center justify-between h-12 lg:h-14">
           <div class="flex items-center shrink-0">
             <Link href="/" class="flex items-center gap-2">
               <img
-                :src="currentLocale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png'"
+                :src="(currentLocale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=2'"
                 alt="كسب"
                 class="h-7 lg:h-8 w-auto header-logo object-contain"
               />
@@ -152,7 +152,7 @@ const navLinks = [
       </Transition>
     </header>
 
-    <main class="pt-14 lg:pt-16">
+    <main class="pt-12 lg:pt-14">
       <slot />
     </main>
   </div>

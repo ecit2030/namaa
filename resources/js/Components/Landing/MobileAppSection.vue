@@ -68,7 +68,7 @@ const getFeatureIconPath = (iconName: string) => {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <img
-          :src="locale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png'"
+          :src="(locale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=2'"
           alt="كسب"
           class="h-10 mx-auto mb-6 object-contain"
         />
