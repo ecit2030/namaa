@@ -19,7 +19,7 @@ const { t, locale } = useI18n();
           <p class="text-lg text-gray-600 mb-10">
             {{ t('contact.subtitle') }}
           </p>
-          <div class="bg-brand-50 rounded-2xl p-8 text-right" :class="locale === 'ar' ? 'text-right' : 'text-left'">
+          <div class="bg-brand-50 rounded-2xl p-8 text-center">
             <div class="space-y-4 text-brand-dark">
               <p class="text-brand-dark/90">
                 {{ t('landing.footer.platformDescription') }}
