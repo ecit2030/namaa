@@ -48,11 +48,11 @@ const logoSrc = computed(() => (locale.value === 'en' ? '/images/logo/logo-main-
             {{ t('landing.footer.platformDescription') }}
           </p>
           <div class="flex flex-col gap-2 text-sm">
-            <a :href="`mailto:${t('landing.footer.email')}`" class="flex items-center gap-2 hover:text-white transition-colors">
-              <span class="text-white/90">{{ t('landing.footer.email') }}</span>
+            <a href="mailto:info@consultant-platform.com" class="flex items-center gap-2 hover:text-white transition-colors">
+              <span class="text-white/90">info@consultant-platform.com</span>
             </a>
             <a href="tel:+966501234567" class="flex items-center gap-2 hover:text-white transition-colors">
-              <span class="text-white/90">{{ t('landing.footer.phone') }}</span>
+              <span class="text-white/90">+966 50 123 4567</span>
             </a>
             <span class="flex items-start gap-2 text-white/70">
               {{ t('landing.footer.address') }}
