@@ -22,8 +22,8 @@ const { t, locale } = useI18n();
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-white">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(47,107,74,0.04),transparent_50%)]" aria-hidden="true" />
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-0">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <!-- Image: right in LTR, left in RTL -->
         <div class="order-2 lg:order-2 flex justify-center">
           <div class="relative w-full max-w-md">
@@ -45,16 +45,16 @@ const { t, locale } = useI18n();
         </div>
         <!-- Text: left in LTR, right in RTL -->
         <div class="order-1 lg:order-1 text-center lg:text-start">
-          <p class="text-brand-forest text-sm font-semibold uppercase tracking-wider mb-4">
+          <p class="text-brand-forest text-sm font-semibold uppercase tracking-wider mb-2">
             {{ t('landing.hero.badge') }}
           </p>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.2] tracking-tight mb-6">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.2] tracking-tight mb-4">
             {{ locale === 'en' ? t('landing.hero.title') : (section.title || t('landing.hero.title')) }}
           </h1>
-          <p class="text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed">
+          <p class="text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mb-3 leading-relaxed">
             {{ locale === 'en' ? t('landing.hero.subtitle') : (section.subtitle || t('landing.hero.subtitle')) }}
           </p>
-          <p class="text-brand-muted text-sm mb-10">
+          <p class="text-brand-muted text-sm mb-6">
             {{ t('landing.hero.tagline') }}
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
