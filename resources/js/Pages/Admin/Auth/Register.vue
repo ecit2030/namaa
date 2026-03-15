@@ -10,7 +10,7 @@
                 <div class="flex w-full flex-1 flex-col lg:w-1/2">
                     <div class="mx-auto w-full max-w-md pt-10">
                         <Link
-                            href="/"
+                            :href="route('landing.index')"
                             class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                         >
                             <svg
