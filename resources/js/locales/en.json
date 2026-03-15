@@ -459,6 +459,23 @@
         "subtitle": "The app is under development. We'll announce it soon.",
         "backToHome": "Back to home"
     },
+    "bookConsultation": {
+        "pageTitle": "Book a consultation",
+        "title": "Book a consultation",
+        "subtitle": "Tell us what you need and we'll get back to you.",
+        "name": "Name",
+        "namePlaceholder": "Enter your name",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "phone": "Phone",
+        "phonePlaceholder": "Enter your phone number",
+        "message": "Message",
+        "messagePlaceholder": "Describe your need or type of consultation",
+        "submit": "Submit request",
+        "sending": "Sending...",
+        "successMessage": "Your request has been received. We'll contact you soon.",
+        "contactTitle": "Contact us"
+    },
 "consultants": {
     "consultantInformation": "Consultant information",
     "workingHours": "Working hours",

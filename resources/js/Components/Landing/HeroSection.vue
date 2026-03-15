@@ -59,7 +59,7 @@ const { t, locale } = useI18n();
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link
-              href="/register"
+              href="/book-consultation"
               class="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
             >
               {{ t('landing.hero.ctaBook') }}

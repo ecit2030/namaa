@@ -919,6 +919,23 @@
         "subtitle": "التطبيق قيد التطوير. سنعلن عنه قريباً.",
         "backToHome": "العودة للرئيسية"
     },
+    "bookConsultation": {
+        "pageTitle": "طلب استشارة",
+        "title": "طلب استشارة",
+        "subtitle": "أخبرنا بما تحتاجه وسنتواصل معك.",
+        "name": "الاسم",
+        "namePlaceholder": "أدخل اسمك",
+        "email": "البريد الإلكتروني",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "phone": "رقم الجوال",
+        "phonePlaceholder": "أدخل رقم الجوال",
+        "message": "الرسالة",
+        "messagePlaceholder": "صف احتياجك أو نوع الاستشارة",
+        "submit": "إرسال الطلب",
+        "sending": "جاري الإرسال...",
+        "successMessage": "تم استلام طلبك. سنتواصل معك قريباً.",
+        "contactTitle": "تواصل معنا"
+    },
     "reviews": {
         "title": "المراجعات",
         "section": "قسم المراجعات",
