@@ -16,10 +16,11 @@ import { applyDirection, getSavedDirection } from './utils/direction'
 import { i18n, setHtmlLang } from './i18n'
 import { useGlobalLoading } from './composables/useGlobalLoading'
 
-const appName = import.meta.env.VITE_APP_NAME || 'casb';
+// Always use casb in tab title (ignore VITE_APP_NAME to avoid Laravel showing)
+const appName = 'casb';
 
 createInertiaApp({
-  title: (title) => `${title} - ${appName}`,
+  title: (title) => (title ? `${title} - ${appName}` : appName),
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
     return pages[`./Pages/${name}.vue`]
