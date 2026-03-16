@@ -16,7 +16,7 @@ import { applyDirection, getSavedDirection } from './utils/direction'
 import { i18n, setHtmlLang } from './i18n'
 import { useGlobalLoading } from './composables/useGlobalLoading'
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'casb';
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
