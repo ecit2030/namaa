@@ -39,9 +39,12 @@ interface Props {
 const props = defineProps<Props>();
 const { t, locale } = useI18n();
 
-const pageTitle = computed(() =>
-  locale.value === 'en' ? t('landing.metaTitle') : (props.page.meta_title || props.page.title)
-);
+const pageTitle = computed(() => {
+  const raw = locale.value === 'en' ? t('landing.metaTitle') : (props.page.meta_title || props.page.title);
+  if (locale.value !== 'ar') return raw;
+  // في الصفحة العربية: استبدال "نماء الأعمال" بعرض "كسب" في تبويب المتصفح
+  return (raw || '').replace(/نماء\s*الأعمال?/g, 'كسب').replace(/نماء/g, 'كسب');
+});
 
 const getSectionComponent = (type: string) => {
   const components: Record<string, any> = {
