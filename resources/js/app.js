@@ -20,7 +20,13 @@ import { useGlobalLoading } from './composables/useGlobalLoading'
 const appName = 'casb';
 
 createInertiaApp({
-  title: (title) => (title ? `${title} - ${appName}` : appName),
+  // Landing page already has full title – don't append " - casb"
+  title: (title) => {
+    if (!title) return appName;
+    const isLandingTitle = ((title.startsWith('Casb ') || title.startsWith('casb ')) && title.includes('Platform')) || title.includes('منصة');
+    if (isLandingTitle) return title;
+    return `${title} - ${appName}`;
+  },
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
     return pages[`./Pages/${name}.vue`]
