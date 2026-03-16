@@ -29,7 +29,7 @@ class StoreUserRequest extends FormRequest
             'phone_number' => ['required', 'regex:/^05\\d{8}$/'],
             'whatsapp_number' => ['nullable', 'regex:/^05\\d{8}$/'],
             'gender' => 'nullable|in:male,female',
-            'password' => 'required|string|min:8',
+            'password' => 'required|min:8',
             'user_type' => 'required|in:customer,consultant',
             // when user_type is consultant, consultation_type must be provided and exist
             'consultation_type_id' => 'required_if:user_type,consultant|nullable|exists:consultation_types,id',
