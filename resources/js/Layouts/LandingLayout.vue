@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { Link } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
+import { switchLocale } from '@/composables/useLocale';
 
+const { t, locale } = useI18n();
 const isMenuOpen = ref(false);
 const isScrolled = ref(false);
+
+const currentLocale = computed(() => (locale.value as string) || 'ar');
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -12,6 +17,11 @@ const toggleMenu = () => {
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 24;
 };
+
+async function toggleLocale() {
+  const next = currentLocale.value === 'ar' ? 'en' : 'ar';
+  await switchLocale(next);
+}
 
 onMounted(() => {
   document.documentElement.classList.remove('dark');
@@ -22,27 +32,33 @@ onUnmounted(() => {
 });
 
 const navLinks = [
-  { href: '/', label: 'الرئيسية' },
-  { href: '#features', label: 'المميزات' },
-  { href: '#how-it-works', label: 'كيف يعمل' },
-  { href: '#services', label: 'الخدمات' },
-  { href: '#testimonials', label: 'آراء العملاء' },
-  { href: '#faq', label: 'الأسئلة الشائعة' },
+  { href: '/', labelKey: 'landing.nav.home' },
+  { href: '#features', labelKey: 'landing.nav.features' },
+  { href: '#how-it-works', labelKey: 'landing.nav.howItWorks' },
+  { href: '#services', labelKey: 'landing.nav.services' },
+  { href: '#testimonials', labelKey: 'landing.nav.testimonials' },
+  { href: '#faq', labelKey: 'landing.nav.faq' },
 ];
 </script>
 
 <template>
-  <div class="landing-page min-h-screen landing-bg bg-white text-brand-dark" dir="rtl">
+  <div class="landing-page min-h-screen landing-bg bg-white text-brand-dark" :dir="currentLocale === 'ar' ? 'rtl' : 'ltr'">
     <!-- Main Header - dark green -->
     <header
       class="fixed z-50 left-0 right-0 top-0 transition-all duration-300 bg-brand-500 backdrop-blur-md border-b border-white/10 shadow-md"
       :class="isScrolled ? 'shadow-lg' : ''"
     >
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 lg:h-18">
-          <Link href="/" class="flex items-center gap-2 shrink-0">
-            <img src="/images/logo/logo-euro.png" alt="نماء الأعمال" class="h-8 lg:h-9 w-auto header-logo" />
-          </Link>
+      <div class="max-w-6xl mx-auto px-2 sm:px-3 lg:px-4 w-full">
+        <div class="flex items-center justify-between h-12 lg:h-14">
+          <div class="flex items-center shrink-0">
+            <Link href="/" class="flex items-center gap-2">
+              <img
+                :src="(currentLocale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=5'"
+                alt="كسب"
+                class="h-7 lg:h-8 w-auto header-logo object-contain"
+              />
+            </Link>
+          </div>
 
           <nav class="hidden lg:flex items-center gap-0">
             <Link
@@ -51,29 +67,37 @@ const navLinks = [
               :href="link.href"
               class="px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
             >
-              {{ link.label }}
+              {{ t(link.labelKey) }}
             </Link>
           </nav>
 
-          <div class="hidden lg:flex items-center gap-3">
+          <div class="hidden lg:flex items-center gap-2">
             <Link
               href="/login"
-              class="px-4 py-2.5 text-sm font-semibold text-white/90 hover:text-white transition-colors"
+              class="px-4 py-2 text-sm font-semibold text-white/90 hover:text-white transition-colors"
             >
-              انضم كمستشار
+              {{ t('landing.nav.joinAsAdvisor') }}
             </Link>
             <Link
-              href="/register"
-              class="px-5 py-2.5 text-sm font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+              href="/coming-soon"
+              class="px-4 py-2 text-sm font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors"
             >
-              حمل التطبيق
+              {{ t('landing.nav.downloadApp') }}
             </Link>
+            <button
+              type="button"
+              @click="toggleLocale"
+              class="inline-flex items-center justify-center w-9 h-9 text-xs font-medium text-white/90 bg-white/10 rounded-lg hover:bg-white/20 transition-colors shrink-0"
+              :title="currentLocale === 'ar' ? t('landing.nav.switchToEnglish') : t('landing.nav.switchToArabic')"
+            >
+              {{ currentLocale === 'ar' ? 'EN' : 'ع' }}
+            </button>
           </div>
 
           <button
             type="button"
             class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
-            aria-label="القائمة"
+            :aria-label="t('menu.menu')"
             @click="toggleMenu"
           >
             <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,30 +122,37 @@ const navLinks = [
           v-show="isMenuOpen"
           class="lg:hidden border-t border-white/20 bg-brand-500"
         >
-          <div class="max-w-6xl mx-auto px-4 py-4 space-y-1">
+          <div class="max-w-6xl mx-auto px-4 py-3 space-y-1">
             <Link
               v-for="link in navLinks"
               :key="link.href"
               :href="link.href"
-              class="block px-4 py-3 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
+              class="block px-4 py-2.5 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
               @click="isMenuOpen = false"
             >
-              {{ link.label }}
+              {{ t(link.labelKey) }}
             </Link>
-            <div class="pt-4 flex flex-col gap-2">
-              <Link href="/login" class="text-center px-4 py-3 font-semibold text-white border border-white/50 rounded-lg hover:bg-white/10 transition-colors" @click="isMenuOpen = false">
-                انضم كمستشار
+            <div class="pt-3 flex flex-col gap-2">
+              <Link href="/login" class="text-center px-4 py-2.5 font-semibold text-white border border-white/50 rounded-lg hover:bg-white/10 transition-colors" @click="isMenuOpen = false">
+                {{ t('landing.nav.joinAsAdvisor') }}
               </Link>
-              <Link href="/register" class="text-center px-4 py-3 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
-                حمل التطبيق
+              <Link href="/coming-soon" class="text-center px-4 py-2.5 font-semibold text-brand-500 bg-white rounded-lg hover:bg-gray-100 transition-colors" @click="isMenuOpen = false">
+                {{ t('landing.nav.downloadApp') }}
               </Link>
+              <button
+                type="button"
+                @click="toggleLocale(); isMenuOpen = false"
+                class="w-full py-2.5 text-sm font-medium text-white/90 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+              >
+                {{ currentLocale === 'ar' ? 'EN — English' : 'ع — العربية' }}
+              </button>
             </div>
           </div>
         </div>
       </Transition>
     </header>
 
-    <main class="pt-16 lg:pt-20">
+    <main class="pt-10 lg:pt-12">
       <slot />
     </main>
   </div>
@@ -147,8 +178,8 @@ const navLinks = [
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(18, 57, 42, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(47, 104, 79, 0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(13, 36, 23, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(47, 107, 74, 0.06) 0%, transparent 50%);
   animation: landing-bg-shift 18s ease-in-out infinite;
 }
 .landing-bg > * {

@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
+
 interface Props {
   section: {
     title?: string;
@@ -14,27 +19,35 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const defaultSteps = [
-  { title: 'تصميم المستشارين والخدمات', description: 'ابحث عن المستشارين حسب التخصص والتقييمات واختر الخدمة المناسبة', icon: 'check' },
-  { title: 'اختر الوقت والطريقة وادفع بأمان', description: 'حدد موعد الجلسة ونوع الاستشارة (فيديو/صوت/نص)، وأتمم الدفع الآمن', icon: 'check' },
-  { title: 'التق بالمستشار واستلم التقرير', description: 'احضر الجلسة الاستشارية، استلم التقارير والمخرجات، ثم قيّم الخدمة', icon: 'check' },
-];
-
-const steps = props.section.items || defaultSteps;
+const steps = computed(() => {
+  if (locale.value === 'en') {
+    return [0, 1, 2].map((i) => ({
+      title: t(`landing.howItWorks.steps.${i}.title`),
+      description: t(`landing.howItWorks.steps.${i}.description`),
+      icon: 'check',
+    }));
+  }
+  if (props.section.items?.length) return props.section.items;
+  return [0, 1, 2].map((i) => ({
+    title: t(`landing.howItWorks.steps.${i}.title`),
+    description: t(`landing.howItWorks.steps.${i}.description`),
+    icon: 'check',
+  }));
+});
 </script>
 
 <template>
-  <section id="how-it-works" class="relative py-20 lg:py-28 bg-white" dir="rtl">
+  <section id="how-it-works" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-2">
-          كيف يعمل
+          {{ t('landing.howItWorks.sectionTitle') }}
         </h2>
         <p class="text-xl font-medium text-gray-600 mb-1">
-          {{ section.title || 'ثلاث خطوات بسيطة' }}
+          {{ locale === 'en' ? t('landing.howItWorks.title') : (section.title || t('landing.howItWorks.title')) }}
         </p>
         <p class="text-brand-muted">
-          {{ section.subtitle || 'للحصول على الاستشارة التي تحتاجها' }}
+          {{ locale === 'en' ? t('landing.howItWorks.subtitle') : (section.subtitle || t('landing.howItWorks.subtitle')) }}
         </p>
       </div>
 

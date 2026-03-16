@@ -4,20 +4,39 @@
       <div
         class="relative flex flex-col justify-center w-full h-screen lg:flex-row dark:bg-gray-900"
       >
-        <div class="flex flex-col flex-1 w-full lg:w-1/2">
-          <div class="w-full max-w-md pt-10 mx-auto">
-            <div class="flex items-center justify-between">
-              <button
-                type="button"
-                @click="toggleLocale"
-                class="inline-flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-700 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
-                :title="currentLocale === 'ar' ? t('auth.login.switchToEnglish') : t('auth.login.switchToArabic')"
+        <div class="flex flex-col flex-1 w-full lg:w-1/2 relative">
+          <button
+            type="button"
+            @click="toggleLocale"
+            class="fixed top-4 end-4 z-50 inline-flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-700 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10 shadow-sm"
+            :title="currentLocale === 'ar' ? t('auth.login.switchToEnglish') : t('auth.login.switchToArabic')"
+          >
+            <span>{{ currentLocale === 'ar' ? 'EN' : 'ع' }}</span>
+          </button>
+          <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto pt-14">
+            <Link
+              :href="route('landing.index')"
+              class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 mb-6"
+            >
+              <svg
+                class="me-2 shrink-0 stroke-current transition-transform"
+                :class="currentLocale === 'ar' ? 'rotate-180' : ''"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
               >
-                <span>{{ currentLocale === 'ar' ? 'EN' : 'ع' }}</span>
-              </button>
-            </div>
-          </div>
-          <div class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+                <path
+                  d="M12.7083 5L7.5 10.2083L12.7083 15.4167"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ t('auth.login.backToHome') }}
+            </Link>
             <div>
               <div class="mb-5 sm:mb-8">
                 <h1
@@ -192,9 +211,15 @@
         >
           <img
             src="/images/auth/login-hero.png"
-            alt="استشارات مالية ومحاسبية"
-            class="w-full h-full object-cover object-center"
+            :alt="t('auth.login.tagline')"
+            class="absolute inset-0 w-full h-full object-cover object-center"
+            aria-hidden="true"
           />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-500/95 via-brand-500/80 to-transparent flex flex-col justify-end p-8 lg:p-12">
+            <p class="text-white text-2xl lg:text-3xl font-bold" :class="currentLocale === 'ar' ? 'text-right' : 'text-left'">
+              {{ t('auth.login.brandName') }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -220,6 +245,18 @@ const form = useForm({
 
 // Use global i18n messages (moved to locale files)
 const { t, locale } = useI18n();
+
+// Sign In page: always start in English so labels (Back to home, Email, Password, Sign In, etc.) show in English from first paint
+;(function ensureLoginPageEnglish() {
+  locale.value = 'en'
+  i18n.global.locale.value = 'en'
+  setHtmlLang('en')
+  applyDirection('ltr')
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('locale', 'en')
+    localStorage.setItem('direction', 'ltr')
+  }
+})()
 
 const currentLocale = computed(() => (locale.value as string) || 'en')
 

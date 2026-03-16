@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
 
 interface ServiceItem {
   title: string;
@@ -21,16 +24,35 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const defaultServices: ServiceItem[] = [
-  { title: 'دراسة جدوى', description: 'دراسة حجم السوق، أنواع العملاء، سلوكهم، والمنافسين لاكتشاف فرص النمو والتهديدات.', icon: 'lightbulb', link: '#', link_text: 'المزيد' },
-  { title: 'تحليل سوق', description: 'دراسة حجم السوق، أنواع العملاء، سلوكهم، والمنافسين لاكتشاف فرص النمو والتهديدات.', icon: 'search', link: '#', link_text: 'المزيد' },
-  { title: 'تحليل مالي', description: 'تقدير التكاليف والإيرادات والأرباح المتوقعة للمشروع، وحساب مؤشرات مثل نقطة التعادل والعائد على الاستثمار.', icon: 'chart', link: '#', link_text: 'المزيد' },
-  { title: 'خطة عمل', description: 'وثيقة توضح أهداف المشروع، وخطوات التشغيل، والموارد المطلوبة، والخطة المالية والتسويقية لفترة زمنية محددة.', icon: 'document', link: '#', link_text: 'المزيد' },
-  { title: 'إدارة استثمار', description: 'مراقبة وتنظيم قرارات الاستثمار من اختيار الفرص وتوزيع رأس المال حتى مراقبة الأداء وتقليل المخاطر.', icon: 'briefcase', link: '#', link_text: 'المزيد' },
-  { title: 'تقييم أعمال', description: 'فحص أداء ونمو ومردودية الشركة لتحديد قيمتها السوقية أو جاذبيتها للاستثمار أو البيع.', icon: 'chart-bar', link: '#', link_text: 'المزيد' },
-];
+const defaultIcons = ['lightbulb', 'search', 'chart', 'document', 'briefcase', 'chart-bar'];
 
-const services = computed(() => props.section.items || defaultServices);
+const services = computed(() => {
+  const iconList = defaultIcons;
+  if (locale.value === 'en') {
+    return iconList.map((icon, i) => ({
+      title: t(`landing.services.items.${i}.title`),
+      description: t(`landing.services.items.${i}.description`),
+      icon,
+      link: '#',
+      link_text: t('landing.services.more'),
+    }));
+  }
+  if (props.section.items?.length) {
+    return props.section.items.map((item, i) => ({
+      ...item,
+      icon: iconList[i] ?? 'document',
+      link: item.link ?? '#',
+      link_text: item.link_text ?? t('landing.services.more'),
+    }));
+  }
+  return iconList.map((icon, i) => ({
+    title: t(`landing.services.items.${i}.title`),
+    description: t(`landing.services.items.${i}.description`),
+    icon,
+    link: '#',
+    link_text: t('landing.services.more'),
+  }));
+});
 
 const getServiceIconPath = (iconName: string) => {
   const paths: Record<string, string> = {
@@ -49,17 +71,17 @@ const getServiceIconPath = (iconName: string) => {
 
 <template>
   <!-- Light section: services -->
-  <section id="services" class="relative py-20 lg:py-28 bg-white">
+  <section id="services" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="text-center max-w-3xl mx-auto mb-10">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          خدماتنا
+          {{ t('landing.services.sectionTitle') }}
         </h2>
         <h3 class="text-xl text-gray-600 font-medium mb-2">
-          {{ section.title || 'خدمات متكاملة تُنقي مشروعك' }}
+          {{ locale === 'en' ? t('landing.services.title') : (section.title || t('landing.services.title')) }}
         </h3>
         <p class="text-brand-muted">
-          {{ section.subtitle || 'مجموعة متنوعة من الخدمات المالية والمحاسبية المصممة لدعم نمو أعمالك' }}
+          {{ locale === 'en' ? t('landing.services.subtitle') : (section.subtitle || t('landing.services.subtitle')) }}
         </p>
       </div>
 
@@ -72,7 +94,7 @@ const getServiceIconPath = (iconName: string) => {
         >
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-forest/15 text-brand-500 mb-4">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path :d="getServiceIconPath(typeof service.icon === 'string' && ['chart','search','lightbulb','check','briefcase','document','scale','chart-bar'].includes(service.icon) ? service.icon : 'document')" />
+              <path :d="getServiceIconPath(service.icon)" />
             </svg>
           </div>
           <h3 class="text-lg font-bold text-brand-dark mb-3">
@@ -82,8 +104,8 @@ const getServiceIconPath = (iconName: string) => {
             {{ service.description }}
           </p>
           <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-accent group-hover:gap-2 transition-all">
-            {{ service.link_text || 'المزيد' }}
-            <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {{ service.link_text ?? t('landing.services.more') }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </span>

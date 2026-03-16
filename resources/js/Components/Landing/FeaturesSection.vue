@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
+
 interface Props {
   section: {
     title?: string;
@@ -13,16 +18,23 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const defaultFeatures = [
-  { title: 'ابحث عن المستشار المناسب', description: 'اختر من مستشارين معتمدين حسب التخصص واحتياجات عملك', icon: 'search' },
-  { title: 'جلسات استشارية أونلاين', description: 'فيديو أو صوت أو محادثة نصية حسب راحتك', icon: 'video' },
-  { title: 'خدمات جاهزة ومتخصصة', description: 'دراسات جدوى، تحليل مالي، خطط أعمال، إعادة هيكلة الديون', icon: 'document' },
-  { title: 'إدارة موحدة', description: 'مواعيدك، سجلات الجلسات، والتقارير من مكان واحد', icon: 'folder' },
-  { title: 'دفع آمن واسترداد واضح', description: 'معاملات آمنة وسياسة استرداد شفافة', icon: 'shield' },
-  { title: 'قيّم وشارك تجربتك', description: 'ساعد رواد الأعمال باختيار المستشار الأنسب', icon: 'star' },
-];
+const defaultIcons = ['search', 'video', 'document', 'folder', 'shield', 'star'];
 
-const features = props.section.items || defaultFeatures;
+const features = computed(() => {
+  if (locale.value === 'en') {
+    return defaultIcons.map((icon, i) => ({
+      title: t(`landing.features.items.${i}.title`),
+      description: t(`landing.features.items.${i}.description`),
+      icon,
+    }));
+  }
+  if (props.section.items?.length) return props.section.items;
+  return defaultIcons.map((icon, i) => ({
+    title: t(`landing.features.items.${i}.title`),
+    description: t(`landing.features.items.${i}.description`),
+    icon,
+  }));
+});
 
 const getIconPath = (iconName: string) => {
   const paths: Record<string, string> = {
@@ -39,17 +51,17 @@ const getIconPath = (iconName: string) => {
 
 <template>
   <!-- Light section: features -->
-  <section id="features" class="relative py-20 lg:py-28 bg-white">
+  <section id="features" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="text-center max-w-3xl mx-auto mb-10">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          {{ section.title || 'لماذا تختار منصتنا؟' }}
+          {{ locale === 'en' ? t('landing.features.title') : (section.title || t('landing.features.title')) }}
         </h2>
         <p class="text-lg text-gray-600 mb-2">
-          {{ section.subtitle || 'كل ما تحتاجه لاستشارات مالية ومحاسبية احترافية بسهولة وأمان' }}
+          {{ locale === 'en' ? t('landing.features.subtitle') : (section.subtitle || t('landing.features.subtitle')) }}
         </p>
         <p class="text-brand-muted font-medium">
-          يثق بنا آلاف رواد الأعمال وأصحاب المشاريع
+          {{ t('landing.features.tagline') }}
         </p>
       </div>
 
@@ -74,7 +86,7 @@ const getIconPath = (iconName: string) => {
             v-if="index === 0"
             class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-pale/30 text-brand-dark text-xs font-medium"
           >
-            حمل التطبيق الآن
+            {{ t('landing.features.downloadApp') }}
           </div>
         </article>
       </div>

@@ -16,18 +16,25 @@ import { applyDirection, getSavedDirection } from './utils/direction'
 import { i18n, setHtmlLang } from './i18n'
 import { useGlobalLoading } from './composables/useGlobalLoading'
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+// Always use casb in tab title (ignore VITE_APP_NAME to avoid Laravel showing)
+const appName = 'casb';
 
 createInertiaApp({
-  title: (title) => `${title} - ${appName}`,
+  // Landing page already has full title – don't append " - casb"
+  title: (title) => {
+    if (!title) return appName;
+    const isLandingTitle = ((title.startsWith('Casb ') || title.startsWith('casb ')) && title.includes('Platform')) || title.includes('منصة');
+    if (isLandingTitle) return title;
+    return `${title} - ${appName}`;
+  },
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
     return pages[`./Pages/${name}.vue`]
   },
   setup({ el, App, props, plugin }) {
     // Sync locale and direction from backend
-    const backendLocale = props.initialPage.props.locale || 'en';
-    const backendDir = props.initialPage.props.dir || 'ltr';
+    const backendLocale = props.initialPage.props.locale || 'ar';
+    const backendDir = props.initialPage.props.dir || 'rtl';
     
     // Update i18n locale to match backend
     i18n.global.locale.value = backendLocale;

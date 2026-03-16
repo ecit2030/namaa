@@ -10,18 +10,19 @@ module.exports = {
 	theme: {
     extend: {
         fontFamily: {
-            sans: ['Figtree', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+            sans: ['Bahij TheSansArabic', 'Figtree', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+            bahij: ['Bahij TheSansArabic', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         },
         colors: {
             testcolor: '#ff0000',
-            // Brand palette (CASB / نماء) – from brand guide
+            // كسب brand palette (8 colors)
             brand: {
-                dark: '#12392A',
-                forest: '#2F684F',
-                muted: '#A58DA0',
-                pale: '#A0BDA0',
-                offwhite: '#F5F7F6',
-                black: '#0E0E0E',
+                dark: '#1E4A33',
+                forest: '#2F6B4A',
+                muted: '#63AF7D',
+                pale: '#8ECB9E',
+                offwhite: '#D8F1E5',
+                black: '#000000',
             },
             }
         }

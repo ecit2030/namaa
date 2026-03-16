@@ -1,12 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap')
-layer(base);
-
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
+/* Bahij TheSansArabic – كسب brand font (add font files to public/fonts/ if needed) */
+@font-face {
+  font-family: 'Bahij TheSansArabic';
+  src: local('Bahij TheSans Arabic Plain'), local('Bahij TheSansArabic Plain'),
+    url('/fonts/BahijTheSansArabic-Plain.woff2') format('woff2'),
+    url('/fonts/BahijTheSansArabic-Plain.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bahij TheSansArabic';
+  src: local('Bahij TheSans Arabic Light'), local('Bahij TheSansArabic Light'),
+    url('/fonts/BahijTheSansArabic-Light.woff2') format('woff2'),
+    url('/fonts/BahijTheSansArabic-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bahij TheSansArabic';
+  src: local('Bahij TheSans Arabic Bold'), local('Bahij TheSansArabic Bold'),
+    url('/fonts/BahijTheSansArabic-Bold.woff2') format('woff2'),
+    url('/fonts/BahijTheSansArabic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-*: initial;
+  --font-bahij: 'Bahij TheSansArabic', ui-sans-serif, system-ui, sans-serif;
   --font-outfit: Outfit, sans-serif;
 
   --breakpoint-*: initial;
@@ -41,26 +68,26 @@ layer(base);
   --color-white: #ffffff;
   --color-black: #101828;
 
-  /* نماء – light theme palette (professional) */
-  --color-brand-dark: #12392a;
-  --color-brand-forest: #2F684f;
-  --color-brand-muted: #a58da0;
-  --color-brand-pale: #a0bda0;
-  --color-brand-offwhite: #f5f7f6;
-  --color-brand-accent: #0e0eee;
-  --color-brand-black: #0e0e0e;
+  /* كسب – brand palette (8 colors) */
+  --color-brand-dark: #1E4A33;
+  --color-brand-forest: #2F6B4A;
+  --color-brand-muted: #63AF7D;
+  --color-brand-pale: #8ECB9E;
+  --color-brand-offwhite: #D8F1E5;
+  --color-brand-accent: #2F6B4A;
+  --color-brand-black: #000000;
   --color-brand-25: #ffffff;
-  --color-brand-50: #f5f7f6;
-  --color-brand-100: #e8eeeb;
-  --color-brand-200: #c5d4cc;
-  --color-brand-300: #7a9b8a;
-  --color-brand-400: #3d6b54;
-  --color-brand-500: #12392A;
-  --color-brand-600: #0f2f23;
-  --color-brand-700: #0c261d;
-  --color-brand-800: #091c16;
-  --color-brand-900: #061210;
-  --color-brand-950: #0E0E0E;
+  --color-brand-50: #D8F1E5;
+  --color-brand-100: #BBE1C2;
+  --color-brand-200: #8ECB9E;
+  --color-brand-300: #63AF7D;
+  --color-brand-400: #63AF7D;
+  --color-brand-500: #2F6B4A;
+  --color-brand-600: #1E4A33;
+  --color-brand-700: #1E4A33;
+  --color-brand-800: #0D2417;
+  --color-brand-900: #0D2417;
+  --color-brand-950: #0D2417;
 
   --color-blue-light-25: #f5fbff;
   --color-blue-light-50: #f0f9ff;
@@ -153,7 +180,7 @@ layer(base);
   --shadow-theme-xl: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
     0px 8px 8px -4px rgba(16, 24, 40, 0.03);
   --shadow-datepicker: -5px 0 0 #262d3c, 5px 0 0 #262d3c;
-  --shadow-focus-ring: 0px 0px 0px 4px rgba(18, 57, 42, 0.2);
+  --shadow-focus-ring: 0px 0px 0px 4px rgba(47, 107, 74, 0.2);
   --shadow-slider-navigation: 0px 1px 2px 0px rgba(16, 24, 40, 0.1),
     0px 1px 3px 0px rgba(16, 24, 40, 0.1);
   --shadow-tooltip: 0px 4px 6px -2px rgba(16, 24, 40, 0.05),
@@ -192,7 +219,7 @@ layer(base);
     cursor: pointer;
   }
   body {
-    @apply relative font-normal font-outfit z-1 bg-brand-offwhite;
+    @apply relative font-normal font-bahij z-1 bg-brand-offwhite;
   }
 }
 
@@ -518,13 +545,13 @@ span.flatpickr-weekday,
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #12392A;
+  background: var(--color-brand-500);
   @apply !border-brand-500 !bg-brand-500 hover:!border-brand-500 hover:!bg-brand-500;
 }
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-  box-shadow: -10px 0 0 #12392A;
+  box-shadow: -10px 0 0 var(--color-brand-500);
 }
 
 .flatpickr-months .flatpickr-prev-month svg,

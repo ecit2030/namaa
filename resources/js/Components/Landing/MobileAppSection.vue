@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
 
 interface FeatureItem {
   title: string;
@@ -20,13 +23,32 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const defaultFeatures: FeatureItem[] = [
-  { title: 'أدر عملك من لوحة تحكم متنقلة', description: 'تابع حجوزاتك، عملائك، وأرباحك من هاتفك المحمول بسهولة', icon: 'mobile', background_color: 'from-brand-dark/5 to-white' },
-  { title: 'أضف خدماتك وحدد أسعارك', description: 'دراسات جدوى، تحليل مالي، خطط أعمال - قدم خدماتك بأسعارك الخاصة', icon: 'tag', background_color: 'from-brand-dark/5 to-white' },
-  { title: 'وسع نطاق عملك', description: 'عروض متعددة، إشعارات فورية، محفظة إلكترونية، تقارير تفصيلية', icon: 'chart-up', background_color: 'from-brand-dark/5 to-white' },
-];
+const defaultIcons = ['mobile', 'tag', 'chart-up'];
 
-const features = computed(() => props.section?.items || defaultFeatures);
+const features = computed(() => {
+  const iconList = defaultIcons;
+  if (locale.value === 'en') {
+    return iconList.map((icon, i) => ({
+      title: t(`landing.mobileApp.features.${i}.title`),
+      description: t(`landing.mobileApp.features.${i}.description`),
+      icon,
+      background_color: 'from-brand-dark/5 to-white',
+    }));
+  }
+  if (props.section?.items?.length) {
+    return props.section.items.map((item, i) => ({
+      ...item,
+      icon: iconList[i] ?? 'mobile',
+      background_color: item.background_color ?? 'from-brand-dark/5 to-white',
+    }));
+  }
+  return iconList.map((icon, i) => ({
+    title: t(`landing.mobileApp.features.${i}.title`),
+    description: t(`landing.mobileApp.features.${i}.description`),
+    icon,
+    background_color: 'from-brand-dark/5 to-white',
+  }));
+});
 
 const getBg = (f: FeatureItem, i: number) =>
   f.background_color || 'from-brand-dark/5 to-white';
@@ -42,15 +64,19 @@ const getFeatureIconPath = (iconName: string) => {
 </script>
 
 <template>
-  <section id="mobile-app" class="relative py-20 lg:py-28 bg-white">
+  <section id="mobile-app" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
-        <img src="/images/logo/logo.png" alt="نماء الأعمال" class="h-10 mx-auto mb-6 object-contain" />
+        <img
+          :src="(locale === 'en' ? '/images/logo/logo-main-en.png' : '/images/logo/logo-main.png') + '?v=5'"
+          alt="كسب"
+          class="h-10 mx-auto mb-6 object-contain"
+        />
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          انضم كمستشار
+          {{ t('landing.mobileApp.title') }}
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-          {{ section?.title || 'وسّع قاعدة عملائك وزد دخلك من خلال تقديم خدماتك عبر منصتنا' }}
+          {{ locale === 'en' ? t('landing.mobileApp.subtitle') : (section?.title || t('landing.mobileApp.subtitle')) }}
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">
@@ -79,28 +105,32 @@ const getFeatureIconPath = (iconName: string) => {
         <article
           v-for="(feature, index) in features"
           :key="index"
-          class="rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:border-brand-200 hover:shadow-md transition-all"
+          class="rounded-2xl border border-gray-200 bg-white p-6 lg:p-8 hover:border-brand-200 hover:shadow-md transition-all flex flex-col"
         >
-          <div
-            v-if="feature.image"
-            class="aspect-[3/4] max-w-[180px] mx-auto mb-5 rounded-xl overflow-hidden bg-brand-50"
-          >
-            <img :src="`/storage/${feature.image}`" :alt="feature.title" class="w-full h-full object-cover" />
+          <div class="flex flex-col rtl:flex-row rtl:items-start rtl:gap-4 rtl:text-right">
+            <div
+              v-if="feature.image"
+              class="aspect-[3/4] max-w-[180px] mx-auto mb-5 rounded-xl overflow-hidden bg-brand-50 rtl:order-1 rtl:mx-0 rtl:mb-0 rtl:shrink-0"
+            >
+              <img :src="`/storage/${feature.image}`" :alt="feature.title" class="w-full h-full object-cover" />
+            </div>
+            <div
+              v-else
+              class="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500 rtl:order-1 rtl:mx-0 rtl:mb-0 rtl:shrink-0"
+            >
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" :d="getFeatureIconPath(feature.icon || 'mobile')" />
+              </svg>
+            </div>
+            <div class="rtl:order-2 flex-1">
+              <h3 class="text-lg font-bold text-brand-dark mb-2 text-center rtl:text-right">
+                {{ feature.title }}
+              </h3>
+              <p class="text-gray-600 leading-relaxed text-sm text-center rtl:text-right">
+                {{ feature.description }}
+              </p>
+            </div>
           </div>
-          <div
-            v-else
-            class="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center bg-brand-forest/15 text-brand-500"
-          >
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" :d="getFeatureIconPath(feature.icon || 'mobile')" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold text-brand-dark mb-2 text-center">
-            {{ feature.title }}
-          </h3>
-          <p class="text-gray-600 leading-relaxed text-sm text-center">
-            {{ feature.description }}
-          </p>
         </article>
       </div>
     </div>
@@ -113,6 +143,6 @@ const getFeatureIconPath = (iconName: string) => {
   color: var(--color-white);
 }
 .store-btn:hover {
-  background-color: #0f2f23;
+  background-color: var(--color-brand-600);
 }
 </style>

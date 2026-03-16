@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import LandingLayout from '@/Layouts/LandingLayout.vue';
 import HeroSection from '@/Components/Landing/HeroSection.vue';
 import FeaturesSection from '@/Components/Landing/FeaturesSection.vue';
@@ -35,6 +37,11 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const { t, locale } = useI18n();
+
+const pageTitle = computed(() =>
+  locale.value === 'en' ? t('landing.metaTitle') : (props.page.meta_title || props.page.title)
+);
 
 const getSectionComponent = (type: string) => {
   const components: Record<string, any> = {
@@ -53,7 +60,7 @@ const getSectionComponent = (type: string) => {
 <template>
   <LandingLayout>
     <Head>
-      <title>{{ page.meta_title || page.title }}</title>
+      <title>{{ pageTitle }}</title>
       <meta
         v-if="page.meta_description"
         name="description"

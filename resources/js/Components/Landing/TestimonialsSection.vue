@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
 
 interface Testimonial {
   name?: string;
@@ -23,13 +26,27 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const defaultTestimonials: Testimonial[] = [
-  { title: 'محمد السعيد', subtitle: 'مشغل أونجة البدنيل', rating: 5, description: '"المستشار كان محترفاً جداً وقدم لي نصائح عملية لتحسين التدفقات النقدية."', avatar: '👨‍💼' },
-  { title: 'فاطمة أحمد', subtitle: 'صاحبة مشروع تجاري', rating: 5, description: '"جلسة الاستشارة وضحت لي نقاط ضعف المنافسين وزودتني بأفكار جديدة للتطوير."', avatar: '👩‍💼' },
-  { title: 'خالد العتيبي', subtitle: 'رائد أعمال', rating: 5, description: '"حصلت على دراسة جدوى كاملة في وقت قياسي، ساعدتني في إقناع المستثمرين."', avatar: '👨‍💻' },
-];
+const defaultAvatars = ['👨‍💼', '👩‍💼', '👨‍💻'];
 
-const testimonials = props.section?.items?.length ? props.section.items : defaultTestimonials;
+const testimonials = computed<Testimonial[]>(() => {
+  if (locale.value === 'en') {
+    return [0, 1, 2].map((i) => ({
+      title: t(`landing.testimonials.items.${i}.name`),
+      subtitle: t(`landing.testimonials.items.${i}.role`),
+      description: t(`landing.testimonials.items.${i}.description`),
+      rating: 5,
+      avatar: defaultAvatars[i],
+    }));
+  }
+  if (props.section?.items?.length) return props.section.items;
+  return [0, 1, 2].map((i) => ({
+    title: t(`landing.testimonials.items.${i}.name`),
+    subtitle: t(`landing.testimonials.items.${i}.role`),
+    description: t(`landing.testimonials.items.${i}.description`),
+    rating: 5,
+    avatar: defaultAvatars[i],
+  }));
+});
 const currentIndex = ref(0);
 const AUTOPLAY_MS = 5000;
 let autoplayTimer: ReturnType<typeof setInterval> | null = null;
@@ -39,7 +56,7 @@ function goTo(index: number) {
 }
 
 function next() {
-  currentIndex.value = (currentIndex.value + 1) % testimonials.length;
+  currentIndex.value = (currentIndex.value + 1) % testimonials.value.length;
 }
 
 function startAutoplay() {
@@ -63,27 +80,27 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-20 lg:py-28 bg-white">
+  <section id="testimonials" class="relative py-8 lg:py-12 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold text-brand-dark mb-3">
-          آراء العملاء
+          {{ t('landing.testimonials.sectionTitle') }}
         </h2>
         <p class="text-lg text-gray-600">
-          {{ section?.title || 'انطباعات حقيقية من عملائنا' }}
+          {{ locale === 'en' ? t('landing.testimonials.subtitle') : (section?.title || t('landing.testimonials.subtitle')) }}
         </p>
         <p class="text-brand-muted mt-1">
-          {{ section?.subtitle || 'رواد أعمال وأصحاب مشاريع حققوا أهدافهم من خلال استشاراتنا' }}
+          {{ locale === 'en' ? t('landing.testimonials.tagline') : (section?.subtitle || t('landing.testimonials.tagline')) }}
         </p>
       </div>
 
       <div class="relative">
-        <div class="absolute top-0 right-4 text-[100px] text-brand-pale/40 font-serif leading-none select-none" aria-hidden="true">
+        <div class="absolute top-0 end-4 text-[100px] text-brand-pale/40 font-serif leading-none select-none" aria-hidden="true">
           "
         </div>
 
         <div class="relative rounded-2xl border border-gray-200 bg-white p-8 sm:p-10 ring-1 ring-gray-100">
-          <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
             <div class="shrink-0">
               <div
                 v-if="testimonials[currentIndex].image"
@@ -97,14 +114,18 @@ onUnmounted(() => {
               </div>
               <div
                 v-else
-                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl flex items-center justify-center text-3xl shadow-md bg-brand-forest/20 text-brand-500"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden flex items-center justify-center shadow-md bg-brand-forest/10 border border-brand-200/50"
               >
-                {{ testimonials[currentIndex].avatar || '👤' }}
+                <img
+                  src="/images/placeholders/avatar.svg"
+                  :alt="testimonials[currentIndex].name || testimonials[currentIndex].title || ''"
+                  class="w-full h-full object-contain p-2"
+                />
               </div>
             </div>
 
-            <div class="flex-1 text-right">
-              <div class="flex justify-end gap-0.5 mb-3">
+            <div class="flex-1 text-start">
+              <div class="flex justify-start gap-0.5 mb-3">
                 <svg
                   v-for="i in 5"
                   :key="i"
@@ -138,7 +159,7 @@ onUnmounted(() => {
             @click="goTo(index)"
             class="rounded-full transition-all duration-300 h-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500"
             :class="currentIndex === index ? 'w-8 bg-brand-forest' : 'w-2.5 bg-brand-200 hover:bg-brand-300'"
-            :aria-label="`الشهادة ${index + 1}`"
+            :aria-label="t('landing.testimonials.carouselLabel', { n: index + 1 })"
           />
         </div>
       </div>
