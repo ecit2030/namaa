@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
 class UpdatePasswordRequest extends FormRequest
 {
@@ -28,10 +27,6 @@ class UpdatePasswordRequest extends FormRequest
                 'required',
                 'string',
                 'confirmed',
-                Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols(),
             ],
         ];
     }
@@ -48,7 +43,6 @@ class UpdatePasswordRequest extends FormRequest
             'current_password.current_password' => 'كلمة السر الحالية غير صحيحة',
             'new_password.required' => 'كلمة السر الجديدة مطلوبة',
             'new_password.confirmed' => 'تأكيد كلمة السر غير متطابق',
-            'new_password.min' => 'كلمة السر يجب أن تكون 8 أحرف على الأقل',
         ];
     }
 
