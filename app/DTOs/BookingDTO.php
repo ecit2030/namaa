@@ -226,6 +226,7 @@ class BookingDTO extends BaseDTO
             'client_name' => $this->client_name,
             'consultant_id' => $this->consultant_id,
             'consultant_name' => $this->consultant_name,
+            'consultant_avatar' => $this->consultant_avatar,
             'bookable_type' => $this->bookable_type,
             'bookable_title' => $this->bookable_title,
             'consultation_method' => $this->consultation_method,
