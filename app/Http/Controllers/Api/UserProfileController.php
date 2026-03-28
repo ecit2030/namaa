@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use App\DTOs\UserDTO;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\Api\UpdateFbTokenRequest;
 use App\Http\Traits\SuccessResponse;
 use App\Http\Traits\ExceptionHandler;
 use Illuminate\Http\Request;
@@ -50,6 +51,27 @@ class UserProfileController extends Controller
         return $this->resourceResponse(
             UserDTO::fromModel($updated)->toArray(),
             'تم تحديث الملف الشخصي بنجاح'
+        );
+    }
+
+    /**
+     * Store or refresh Firebase Cloud Messaging token for push notifications.
+     */
+    public function updateFbToken(UpdateFbTokenRequest $request, UserService $userService)
+    {
+        $user = $request->user();
+
+        $userService->update($user->id, [
+            'fb_token' => $request->validated('fb_token'),
+        ]);
+
+        $user->refresh();
+
+        return $this->successResponse(
+            [
+                'fb_token_updated' => true,
+            ],
+            'تم حفظ رمز الإشعارات بنجاح'
         );
     }
 

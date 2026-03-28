@@ -15,6 +15,9 @@ Route::prefix('user/profile')->middleware('auth:sanctum')->group(function () {
     Route::delete('/', [App\Http\Controllers\Api\UserProfileController::class, 'destroy']);
 });
 
+Route::put('/user/fb-token', [App\Http\Controllers\Api\UserProfileController::class, 'updateFbToken'])
+    ->middleware('auth:sanctum');
+
 
 
 // Authentication Routes

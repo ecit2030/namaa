@@ -25,11 +25,12 @@ class User extends Authenticatable
         'user_type',
         'is_active',
         'locale',
+        'fb_token',
         'created_by',
         'updated_by',
     ];
 
-    protected array $dontLog = ['password', 'remember_token'];
+    protected array $dontLog = ['password', 'remember_token', 'fb_token'];
 
     public function createdUsers()
     {
@@ -44,6 +45,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'fb_token',
     ];
 
     protected $casts = [
